@@ -6,8 +6,8 @@ package interfaces;
 
 /**
  *
- * @author GO BRO
+ * @author Imen Frigui
  */
-public class IServiceMessages {
+public interface IServiceMessages {
     
 }

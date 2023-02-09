@@ -6,7 +6,7 @@ package services;
 
 /**
  *
- * @author GO BRO
+ * @author Imen Frigui
  */
 public class ServiceMessages {
     
