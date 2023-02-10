@@ -4,8 +4,6 @@
  */
 package job4u;
 
-import services.ServiceUsers;
-import utils.MyDB;
 
 /**
  *
@@ -17,11 +15,7 @@ public class Job4U {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-                MyDB db=MyDB.getInstance();
-     
-            ServiceUsers sp = new ServiceUsers();
-
-        System.out.println(sp.afficher());
+    
     }
     
 }
