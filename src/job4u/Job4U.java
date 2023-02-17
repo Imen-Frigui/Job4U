@@ -5,7 +5,9 @@
 package job4u;
 
 import Entities.Postulation;
+import Entities.Societe;
 import Services.ServicePostulation;
+import Services.ServiceSociete;
 import Utils.MyDB;
 
 /**
@@ -22,7 +24,19 @@ public class Job4U {
       Postulation P = new Postulation("2020","1524","5");
       ServicePostulation S=new ServicePostulation ();
       /*S.ajouter(P);*/
-       System.out.println(S.afficher());
+      /*S.modifier(P);*/
+       /*System.out.println(S.afficher())*/;
+       /*S.supprimer(P)*/
+      Societe S1= new Societe("2023","152@h4","hjkfj");
+      ServiceSociete Sos=new ServiceSociete ();
+      /*Sos.ajouter(S1);*/
+      /*System.out.println(Sos.afficher());*/
+     
+      
+      
+      
+       
+       
       
       
     }

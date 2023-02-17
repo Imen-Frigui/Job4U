@@ -46,7 +46,7 @@ public class ServicePostulation implements IServicePostulation {
         public void modifier(Postulation p){
         try {
             ste=(Statement) connection.createStatement();
-            String req_update=("Update pidevusers set Date=2/15/3, Simple_user=3, Email=5 where Date =5");
+            String req_update=("UPDATE `postulation` SET `Date`='[value-1]',`Simple_user`='[value-2]',`Email`='[value-3]' WHERE 1");
             ste.executeUpdate(req_update);
         } catch (SQLException ex) {
             Logger.getLogger(ServicePostulation.class.getName()).log(Level.SEVERE, null, ex);
@@ -57,7 +57,7 @@ public class ServicePostulation implements IServicePostulation {
          public void supprimer(Postulation p){
         try {
             ste=(Statement) connection.createStatement();
-            String req_update=("DELETE FROM `pidevusers` Date`.` Simple_user`WHERE Email=5 . Date =5");
+            String req_update=("DELETE FROM `postulation` WHERE 0");
             ste.executeUpdate(req_update);
         } catch (SQLException ex) {
             Logger.getLogger(ServicePostulation.class.getName()).log(Level.SEVERE, null, ex);

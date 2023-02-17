@@ -29,7 +29,7 @@ public class ServiceSociete implements IServiceSociete {
  @Override
     public void ajouter(Societe s) {
      try {
-         PreparedStatement pre = (PreparedStatement) connection.prepareStatement("INSERT INTO `pidevusers`.`societe` (`nom`,`adresse`,`email`) VALUES (5,loll,klk)");
+         PreparedStatement pre = (PreparedStatement) connection.prepareStatement("INSERT INTO `societe`(`nom`, `adresse`, `email`) VALUES (?,?,?)");
          pre.setString(1, s.getNom());
          pre.setString(2, s.getAdresse());
          pre.setString(3, s.getEmail());
@@ -44,7 +44,7 @@ public class ServiceSociete implements IServiceSociete {
     public void modifier(Societe s) {
      try {
          ste=(Statement) connection.createStatement();
-         String req_update=("Update pidevusers set Date=2/15/3, adresse=3, email=5 where Date =5");
+         String req_update=("UPDATE `societe` SET `nom`='[value-1]',`adresse`='[value-2]' WHERE 1");
          ste.executeUpdate(req_update);
      } catch (SQLException ex) {
          Logger.getLogger(ServiceSociete.class.getName()).log(Level.SEVERE, null, ex);
@@ -55,7 +55,7 @@ public class ServiceSociete implements IServiceSociete {
     public void supprimer(Societe s) {
      try {
          ste=(Statement) connection.createStatement();
-         String req_update=("DELETE FROM `pidevusers` Date`.`adresse`WHERE Email=5 . Date =5");
+         String req_update=("DELETE FROM `societe` WHERE 0");
          ste.executeUpdate(req_update);
      } catch (SQLException ex) {
          Logger.getLogger(ServiceSociete.class.getName()).log(Level.SEVERE, null, ex);
@@ -67,7 +67,7 @@ public class ServiceSociete implements IServiceSociete {
  ArrayList<Societe> listsos = new ArrayList<>();
         try{
         ste= (Statement) connection.createStatement();
-        String req_select="SELECT * FROM `societe`";
+        String req_select="SELECT `nom`, `adresse`, `email` FROM `societe` WHERE 1";
         ResultSet res = ste.executeQuery(req_select);
         while(res.next()){
             String nom = res.getString("Date");

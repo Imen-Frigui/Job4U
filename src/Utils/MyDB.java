@@ -12,7 +12,7 @@ import java.sql.SQLException;
  * @author user
  */
 public class MyDB {
-    final String url="jdbc:mysql://localhost:3306/pidevusers";
+    final String url="jdbc:mysql://localhost:3306/pidevusers-1";
     final String user="root";
     final String pwd="";
     Connection con;
