@@ -1,0 +1,90 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Services;
+
+import Entities.Postulation;
+import Interfaces.IServicePostulation;
+import Utils.MyDB;
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.Statement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author user
+ */
+public class ServicePostulation implements IServicePostulation {
+    Connection connection;
+    Statement ste;
+    public ServicePostulation(){
+        connection=MyDB.getInstance().getCon();
+    }
+
+   
+    
+    @Override
+    public void ajouter(Postulation p)   {
+        try {
+            PreparedStatement pre = (PreparedStatement) connection.prepareStatement("INSERT INTO `postulation`(`Date`, `Simple_user`, `Email`) VALUES (?,?,?)");
+            pre.setString(1, p.getDate());
+            pre.setString(2, p.getSimple_user());
+            pre.setString(3, p.getEmail());
+            pre.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ServicePostulation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    @Override
+        public void modifier(Postulation p){
+        try {
+            ste=(Statement) connection.createStatement();
+            String req_update=("Update pidevusers set Date=2/15/3, Simple_user=3, Email=5 where Date =5");
+            ste.executeUpdate(req_update);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServicePostulation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        }
+    @Override
+         public void supprimer(Postulation p){
+        try {
+            ste=(Statement) connection.createStatement();
+            String req_update=("DELETE FROM `pidevusers` Date`.` Simple_user`WHERE Email=5 . Date =5");
+            ste.executeUpdate(req_update);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServicePostulation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         }
+        
+        
+
+    @Override
+    public ArrayList<Postulation> afficher() {
+        ArrayList<Postulation> listpos = new ArrayList<>();
+        try{
+        ste= (Statement) connection.createStatement();
+        String req_select="SELECT * FROM `postulation`";
+        ResultSet res = ste.executeQuery(req_select);
+        while(res.next()){
+            String Date = res.getString("Date");
+            String Simple_user = res.getString(3);
+            String Email = res.getString("Email");
+            Postulation p = new Postulation(Date,Simple_user,Email);
+            listpos.add(p);
+        }
+        }catch(SQLException ex){
+            System.out.println("SQLException "+ex.getMessage());
+        }
+        return listpos;
+    }
+   
+   
+}
