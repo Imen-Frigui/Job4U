@@ -3,7 +3,7 @@ name: Job4U
 about: Pidev
 title: add requested libraries and connect to your DB
 labels: documentation, java, javaFX, MySQL
-assignees: Imen-Frigui
+assignees: Imen Frigui
 
 ---
 
