@@ -16,7 +16,7 @@ import utils.MyDB;
 
 /**
  *
- * @author Imen Frigui
+ * @author 
  */
 public class ServiceUsers implements IServiceUsers<User>{
     Connection connection;
@@ -51,7 +51,7 @@ public class ServiceUsers implements IServiceUsers<User>{
 
     @Override
     public void ajouter2(User u) throws SQLException {
-        PreparedStatement pre = connection.prepareStatement("INSERT INTO `esprit3a11`.`Personne` (`nom`,`prenom`,`pswd`) VALUES (?,?,?)");
+        PreparedStatement pre = connection.prepareStatement("INSERT INTO `esprit3a11`.`Personne` (`nom`,`prenom`,`password`) VALUES (?,?,?)");
         pre.setString(1, u.getNom());
         pre.setString(2, u.getPrenom());
         pre.setString(3, u.getPswd());
@@ -71,7 +71,7 @@ public class ServiceUsers implements IServiceUsers<User>{
             int id = res.getInt(1);
             String nom = res.getString("nom");
             String prenom = res.getString(3);
-            String pswd = res.getString("pswd");
+            String pswd = res.getString("password");
             User us = new User(id,nom,prenom,pswd);
             listusrs.add(us);
         }

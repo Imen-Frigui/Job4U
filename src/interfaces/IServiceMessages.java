@@ -4,10 +4,16 @@
  */
 package interfaces;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 /**
  *
- * @author Imen Frigui
+ * @author
  */
-public interface IServiceMessages {
-    
+public interface IServiceMessages <M>{
+    public void Add(M  m) throws SQLException;
+    public void Delete(M m);
+    public void Edit(M m);
+    public ArrayList<M> afficher();
 }

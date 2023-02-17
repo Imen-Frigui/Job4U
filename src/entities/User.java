@@ -6,25 +6,25 @@ package entities;
 
 /**
  *
- * @author Imen Frigui
+ * @author 
  */
 public class User {
     private int id;
     private String nom;
     private String prenom;
-    private String pswd;
+    private String password;
 
-    public User(String nom, String prenom, String pswd) {
+    public User(String nom, String prenom, String password) {
         this.nom = nom;
         this.prenom = prenom;
-        this.pswd = pswd;
+        this.password = password;
     }
 
-    public User(int id, String nom, String prenom, String pswd) {
+    public User(int id, String nom, String prenom, String password) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
-        this.pswd = pswd;
+        this.password = password;
     }
 
     public User() {
@@ -59,21 +59,21 @@ public class User {
     //toString
     @Override
     public String toString() {
-        return "Personne{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", pswd=" + pswd + '}';
+        return "Personne{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", password=" + password + '}';
     }
 
     /**
      * @return the type
      */
     public String getPswd() {
-        return pswd;
+        return password;
     }
 
     /**
      * @param pswd the type to set
      */
     public void setPswd(String pswd) {
-        this.pswd = pswd;
+        this.password = pswd;
     }
     
 }
