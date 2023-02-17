@@ -5,6 +5,7 @@
 package services;
 
 import entities.Discussion;
+import entities.Message;
 import interfaces.IServiceDiscussion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import utils.MyDB;
 
 /**
@@ -69,6 +71,69 @@ public class ServiceDiscussion implements IServiceDiscussion<Discussion> {
         }
         
         return listDisc;    }
+    
+         public ArrayList<Message> AfficherMessageDiscussion(int id){
+        ArrayList<Message> messages = new ArrayList<>();
+        try {
+            String requete = "Select `discussion`.`id_disc`,`message`.`id_sender`,`message`.`message` FROM `message` JOIN `discussion` WHERE `discussion`.`id_disc` = `message`.`id_disc` AND `discussion`.`id_disc`=?";
+            PreparedStatement pst = connection.prepareStatement(requete);
+            pst.setInt(1,id);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                messages.add(new Message(rs.getInt(1),rs.getInt(2),rs.getString(3)));
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erreur affichage des message \n" + ex.getMessage());
+        }
+        return messages;
+    }
+         
+         public String AfficherDernierMess(int id){
+         try {
+         String requete = "Select `message` FROM `message` WHERE `id_disc`=? ORDER BY id_mesg DESC limit 1";
+            PreparedStatement pst = connection.prepareStatement(requete);
+            pst.setInt(1,id);
+            ResultSet rs = pst.executeQuery();
+            if(rs.next()) return rs.getString(1);
+            return "pas de message";
+         } catch (SQLException ex) {
+            System.out.println("Erreur lors d'extraction des données \n" + ex.getMessage());
+            return "pas de message";
+        }
+     }
+    public ArrayList<Discussion> AfficherListe(int id){
+        ArrayList<Discussion> discussion = new ArrayList<>();
+        try {
+            String requete;
+            requete = "Select * FROM `discussion` WHERE `id_reciver`=?";
+            PreparedStatement pst = connection.prepareStatement(requete);
+            pst.setInt(3,id);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erreur lors d'extraction des données \n" + ex.getMessage());
+        }
+        return discussion;
+    }
+        public ArrayList<Discussion> Search (String search){
+            ArrayList<Discussion> discussion = new ArrayList<>();
+        try{
+            PreparedStatement p = connection.prepareStatement("Select `discussion`.`id_disc`,`discussion`.`id_sender`,`discussion`.`id_reciver` FROM `users` JOIN `Discussion` WHERE `users`.`Nom` LIKE ? OR `users`.`Prenom` LIKE ?");
+            p.setString(1,"%"+search+"%");
+            p.setString(2,"%"+search+"%");
+
+            ResultSet r = p.executeQuery();
+            while(r.next()){
+                discussion.add(new Discussion(r.getInt(1),r.getInt(2),r.getInt(3)));
+        }
+        } catch (SQLException ex) {
+            System.out.println("Erreur lors d'extraction des données \n" + ex.getMessage());
+        }
+            return discussion;
+
+    }
+    
     
 
 

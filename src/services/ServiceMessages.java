@@ -51,7 +51,20 @@ public class ServiceMessages implements IServiceMessages<Message> {
 
     @Override
     public void Edit(Message m) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+      try{ 
+        String query = "update `message` set `message` = ? where `id_mesg` = ?";
+      PreparedStatement preparedStmt = connection.prepareStatement(query);
+      preparedStmt.setInt   (2, m.getId_mesg());
+      preparedStmt.setString(1, m.getMessage());
+
+      // execute the java preparedstatement
+      preparedStmt.executeUpdate();
+      
+      connection.close();
+        }
+        catch (SQLException e){
+            System.out.println("erreur lors de la suppression de la discussion \n " + e.getMessage());
+        }
     }
     @Override
     public void Delete(Message m) {

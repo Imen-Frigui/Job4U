@@ -40,7 +40,7 @@ public class Message {
 
     @Override
     public String toString() {
-        return  "Message{" + "contenu_msg=" + getMessage();
+        return  "Message{" + "contenu_msg=" + getMessage()+", id_disc="+getId_disc()+", id_sender"+getId_sender();
     }
 
     /**
