@@ -14,6 +14,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import utils.MyDB;
 
 /**
@@ -116,6 +118,7 @@ public class ServiceDiscussion implements IServiceDiscussion<Discussion> {
         }
         return discussion;
     }
+    
         public ArrayList<Discussion> Search (String search){
             ArrayList<Discussion> discussion = new ArrayList<>();
         try{
@@ -133,7 +136,32 @@ public class ServiceDiscussion implements IServiceDiscussion<Discussion> {
             return discussion;
 
     }
-    
+        public VBox GetConversations(int id, VBox listView) {
+        try {
+            String requete;
+            requete = "Select * FROM `discussion` WHERE `id_reciver`=?";
+            java.sql.PreparedStatement pst = connection.prepareStatement(requete);
+            pst.setInt(1,id);
+            ResultSet res = pst.executeQuery();
+
+            while (res.next()) {
+                Discussion conv = new Discussion(res.getInt(1), res.getInt(2), res.getInt(3));
+                Label label = new Label();
+                label.setUserData(conv);
+                label.setText(conv.toString());
+                //label.setAlignment(Pos.CENTER);
+                //label.setFont(new Font(20));
+                label.setStyle("-fx-background-color: #007bff; -fx-background-radius: 50px;");
+                //label.setPadding(new Insets(20, 25, 20, 25));
+
+                listView.getChildren().add(label);
+            }
+
+            // connection.close();
+        } catch (SQLException e) {
+        }
+        return listView;
+    }
     
 
 
