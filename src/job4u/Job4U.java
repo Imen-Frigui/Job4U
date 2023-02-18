@@ -22,7 +22,7 @@ import utils.MyDB;
 
 /**
  *
- * @author 
+ * @author Imen Frigui
  */
 public class Job4U {
     

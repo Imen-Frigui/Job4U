@@ -16,7 +16,7 @@ import utils.MyDB;
 
 /**
  *
- * @author 
+ * @author Imen Frigui
  */
 public class ServiceUsers implements IServiceUsers<User>{
     Connection connection;

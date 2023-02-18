@@ -16,7 +16,7 @@ import utils.MyDB;
 
 /**
  *
- * @author 
+ * @author Imen Frigui
  */
 public class ServiceMessages implements IServiceMessages<Message> {
     Connection connection;

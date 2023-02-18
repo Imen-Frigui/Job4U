@@ -6,7 +6,7 @@ package entities;
 
 /**
  *
- * @author 
+ * @author Imen Frigui
  */
 public class User {
     private int id;

@@ -20,7 +20,7 @@ import utils.MyDB;
 
 /**
  *
- * @author GO BRO
+ * @author Imen Frigui
  */
 public class NewFXMain extends Application {
                 MyDB db=MyDB.getInstance();

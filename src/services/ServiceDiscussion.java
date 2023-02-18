@@ -20,7 +20,7 @@ import utils.MyDB;
 
 /**
  *
- * @author GO BRO
+ * @author Imen Frigui
  */
 public class ServiceDiscussion implements IServiceDiscussion<Discussion> {
     Connection connection;

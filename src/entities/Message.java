@@ -6,7 +6,7 @@ package entities;
 
 /**
  *
- * @author 
+ * @author Imen Frigui
  */
 public class Message {
     private int id_mesg;

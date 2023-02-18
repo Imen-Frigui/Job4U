@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author
+ * @author Imen Frigui
  */
 public interface IServiceMessages <M>{
     public void Add(M  m) throws SQLException;

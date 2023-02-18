@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author GO BRO
+ * @author Imen Frigui
  * @param <D>
  */
 public interface IServiceDiscussion <D> {
