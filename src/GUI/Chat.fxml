@@ -12,8 +12,8 @@
 
 <AnchorPane id="AnchorPane" prefHeight="580.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ChatController">
    <children>
-      <Separator layoutX="601.0" orientation="VERTICAL" prefHeight="586.0" prefWidth="0.0" />
-      <Pane prefHeight="580.0" prefWidth="597.0">
+      <Separator layoutX="607.0" orientation="VERTICAL" prefHeight="586.0" prefWidth="0.0" />
+      <Pane layoutX="24.0" prefHeight="580.0" prefWidth="574.0">
          <children>
             <GridPane fx:id="dissGrid" layoutY="68.0" maxHeight="580.0" maxWidth="230.0" minHeight="100.0" minWidth="230.0" prefHeight="512.0" prefWidth="230.0">
               <columnConstraints>
