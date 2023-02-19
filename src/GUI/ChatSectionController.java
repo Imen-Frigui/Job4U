@@ -71,7 +71,7 @@ public class ChatSectionController implements Initializable {
     private void sendMsg(ActionEvent event) {
         String msg = msgTxtFld.getText();
         ServiceMessages smsg = new ServiceMessages();
-        Message m = new Message(1, 1, msg);
+        Message m = new Message(17, 3, msg);
         try {
             smsg.Add(m);
             msgTxtFld.setText("");
