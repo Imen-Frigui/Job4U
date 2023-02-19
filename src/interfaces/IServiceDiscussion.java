@@ -6,6 +6,7 @@ package interfaces;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -15,5 +16,5 @@ import java.util.ArrayList;
 public interface IServiceDiscussion <D> {
     public void Add(D  d) throws SQLException;
     public void Delete(D d);
-    public ArrayList<D> afficher();
+    public List<D> afficher();
 }

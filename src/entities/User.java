@@ -26,6 +26,12 @@ public class User {
         this.prenom = prenom;
         this.password = password;
     }
+    
+    public User(int id, String nom, String prenom) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+    }
 
     public User() {
     }

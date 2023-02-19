@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="580.0" prefWidth="780.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ChatScreenController">
+    <stylesheets>
+        <URL value="@Stylesheet.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane layoutX="150.0" prefHeight="580.0" prefWidth="630.0">
+         <children>
+            <StackPane fx:id="contentArea" prefHeight="580.0" prefWidth="630.0" />
+         </children>
+      </AnchorPane>
+      <Pane prefHeight="580.0" prefWidth="150.0" style="-fx-background-color: #0c2d48;" styleClass="side-bar">
+         <children>
+            <Circle fill="WHITE" layoutX="75.0" layoutY="75.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="51.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/groom_friend2.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="39.0" layoutY="127.0" prefHeight="15.0" prefWidth="74.0" text="userName" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER_LEFT" layoutX="7.0" layoutY="166.0" onMouseClicked="#switchHome" prefHeight="47.0" prefWidth="139.0" styleClass="sidebar-btn">
+               <children>
+                  <ImageView fitHeight="36.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/dash.png" />
+                     </image>
+                  </ImageView>
+
+                  <Label prefHeight="15.0" prefWidth="74.0" styleClass="sidebar-btn-text" text="HOME" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="7.0" layoutY="213.0" onMouseClicked="#switchChat" prefHeight="47.0" prefWidth="139.0" styleClass="sidebar-btn">
+               <children>
+                  <ImageView fitHeight="37.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/chat-outline-filled.png" />
+                     </image>
+                  </ImageView>
+
+                  <Label prefHeight="15.0" prefWidth="74.0" styleClass="sidebar-btn-text" text="CHAT" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <ImageView fitHeight="303.0" fitWidth="306.0" layoutX="-66.0" layoutY="398.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Downloads/325262439_1247854229152378_4668487808853847562_n.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

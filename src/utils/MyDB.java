@@ -4,17 +4,13 @@
  */
 package utils;
 
-/**
- *
- * @author Imen Frigui
- */
 import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
  *
- * @author 
+ * @author Imen Frigui
  */
 public class MyDB {
     final String url="jdbc:mysql://localhost:3306/job4u";

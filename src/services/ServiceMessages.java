@@ -9,9 +9,11 @@ import entities.Message;
 import interfaces.IServiceMessages;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import utils.MyDB;
 
 /**
@@ -28,57 +30,90 @@ public class ServiceMessages implements IServiceMessages<Message> {
 
     @Override
     public void Add(Message m) throws SQLException {
-            PreparedStatement pstmt = null;
-        try{
-            pstmt = connection.prepareStatement("INSERT INTO message (id_disc, id_sender, message) VALUES (?, ?, ?)");
+        try {
+            PreparedStatement pre = connection.prepareStatement("INSERT INTO `job4u`.`message` (`id_disc`,`id_sender`,`message`) VALUES (?,?,?)");
+            pre.setInt(1, m.getId_disc());
+            pre.setInt(2, m.getId_sender());
+            pre.setString(3, m.getMessage());
 
-        pstmt.setLong(1, m.getId_disc());
-        pstmt.setInt(2, m.getId_sender());
-        pstmt.setString(3, m.getMessage());
-
-        pstmt.executeUpdate();
-    } catch (SQLException ex) {
-            System.out.println("erreur lors de la addession de la discussion \n " + ex.getMessage());
-    } 
-
-    }
-
-
-    @Override
-    public ArrayList<Message> afficher() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void Edit(Message m) {
-      try{ 
-        String query = "update `message` set `message` = ? where `id_mesg` = ?";
-      PreparedStatement preparedStmt = connection.prepareStatement(query);
-      preparedStmt.setInt   (2, m.getId_mesg());
-      preparedStmt.setString(1, m.getMessage());
-
-      // execute the java preparedstatement
-      preparedStmt.executeUpdate();
-      
-      connection.close();
-        }
-        catch (SQLException e){
-            System.out.println("erreur lors de la suppression de la discussion \n " + e.getMessage());
+            pre.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("Exception: " + ex.getMessage());
         }
     }
+
     @Override
     public void Delete(Message m) {
         try {
-            String requete = "DELETE FROM `job4u`.`message` WHERE `id_message`=?";
-            PreparedStatement ps = connection.prepareStatement(requete);      
-            ps.setInt(1,m.getId_mesg());
-            ps.executeUpdate();
-            ps.close();
-            System.out.println("Discussion supprimee !");
+            String requete = "DELETE FROM message WHERE `id_mesg`=?";
+            PreparedStatement pst = connection.prepareStatement(requete);
+            pst.setInt(1, m.getId_mesg());
+            pst.executeUpdate();
+            System.out.println("Message supprimée !");
         } catch (SQLException ex) {
             System.out.println("erreur lors de la suppression de la discussion \n " + ex.getMessage());
         }
     }
 
-    
+    @Override
+    public List<Message> afficher() {
+        try {
+            List<Message> listOfMsgs = new ArrayList<>();
+
+            ste = connection.createStatement();
+            ResultSet rs = ste.executeQuery("Select * from message");
+            while (rs.next()) {
+                int id_mesg = rs.getInt("id_mesg");
+                int id_disc = rs.getInt("id_disc");
+                int id_sender = rs.getInt("id_sender");
+                String message = rs.getString("message");
+                Message m = new Message(id_mesg, id_disc, id_sender, message);
+                listOfMsgs.add(m);
+            }
+            System.out.println(listOfMsgs);
+            return listOfMsgs;
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return null;
+    }
+
+    public List<Message> getMsgsByDissId(int id) {
+        try {
+            List<Message> listOfMsgs = new ArrayList<>();
+
+            ste = connection.createStatement();
+            ResultSet rs = ste.executeQuery("Select * from message where id_disc=" + id + ";");
+            while (rs.next()) {
+                int id_mesg = rs.getInt("id_mesg");
+                int id_disc = rs.getInt("id_disc");
+                int id_sender = rs.getInt("id_sender");
+                String message = rs.getString("message");
+                Message m = new Message(id_mesg, id_disc, id_sender, message);
+                listOfMsgs.add(m);
+            }
+            System.out.println(listOfMsgs);
+            return listOfMsgs;
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return null;
+    }
+
+    public void Edit(int id, String msg) {
+        try {
+            String query = "update `message` set `message` = ? where `id_mesg` = ?";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString(1, msg);
+            preparedStmt.setInt(2, id);
+
+            // execute the java preparedstatement
+            preparedStmt.executeUpdate();
+
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("erreur lors de la modif de la discussion \n " + e.getMessage());
+        }
+    }
+
 }
