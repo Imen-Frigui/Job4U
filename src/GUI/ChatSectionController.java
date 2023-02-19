@@ -38,6 +38,7 @@ import utils.MyListener;
  */
 public class ChatSectionController implements Initializable {
 
+   
     @FXML
     private Label senderName;
     @FXML
@@ -46,9 +47,11 @@ public class ChatSectionController implements Initializable {
     private Button msgBtn;
     @FXML
     private GridPane msgsGrid;
-    
+
     private MyListener myListener;
+
     private Discussion d;
+
     public static List<Message> msgsList = new ArrayList<>();
     public static List<Message> msgs = new ArrayList<>();
 
@@ -57,8 +60,12 @@ public class ChatSectionController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        try {
+            DisplayDisc();
+        } catch (SQLException ex) {
+            Logger.getLogger(ChatSectionController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     @FXML
     private void sendMsg(ActionEvent event) {
@@ -130,5 +137,5 @@ public class ChatSectionController implements Initializable {
             System.out.println(ex.getMessage());
         }
     }
-    
+
 }

@@ -25,9 +25,7 @@ import utils.MyListener;
  * @author Imen Frigui
  */
 public class MsgController implements Initializable {
-
-    
-    private MyListener myListener;
+private MyListener myListener;
     private Message m;
     public static Message message;
     @FXML

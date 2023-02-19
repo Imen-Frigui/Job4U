@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import utils.MyDB;
 
@@ -34,9 +35,26 @@ public class ServiceMessages implements IServiceMessages<Message> {
             PreparedStatement pre = connection.prepareStatement("INSERT INTO `job4u`.`message` (`id_disc`,`id_sender`,`message`) VALUES (?,?,?)");
             pre.setInt(1, m.getId_disc());
             pre.setInt(2, m.getId_sender());
-            pre.setString(3, m.getMessage());
-
+            
+            String[] places = new String[]{"fuck","kill", "die", "piss", "bitch", "shit", "putain", "zut", "beauty_salon"};
+            String text = m.getMessage().toLowerCase();
+           
+                if (!Arrays.asList(places).contains(text)) {
+                    text = m.getMessage();
+                } else {
+                    char[] word = text.toCharArray();
+                    for (int j = 1; j < word.length - 1; j++) {
+                        word[j] = '*';
+                    }
+                    text=Arrays.toString(word);
+                }
+                System.out.println(text);
+            
+            pre.setString(3, text);
             pre.executeUpdate();
+
+            
+
         } catch (SQLException ex) {
             System.out.println("Exception: " + ex.getMessage());
         }
