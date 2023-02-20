@@ -49,7 +49,6 @@ public class ServiceDiscussion implements IServiceDiscussion<Discussion> {
             PreparedStatement ps = connection.prepareStatement(requete);
             ps.setInt(1, d.getId_disc());
             ps.executeUpdate();
-            ps.close();
             System.out.println("Discussion supprimee !");
         } catch (SQLException ex) {
             System.out.println("erreur lors de la suppression de la discussion \n " + ex.getMessage());
