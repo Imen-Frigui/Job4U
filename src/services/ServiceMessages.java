@@ -52,9 +52,6 @@ public class ServiceMessages implements IServiceMessages<Message> {
             
             pre.setString(3, text);
             pre.executeUpdate();
-
-            
-
         } catch (SQLException ex) {
             System.out.println("Exception: " + ex.getMessage());
         }
@@ -124,11 +121,8 @@ public class ServiceMessages implements IServiceMessages<Message> {
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.setString(1, msg);
             preparedStmt.setInt(2, id);
-
             // execute the java preparedstatement
             preparedStmt.executeUpdate();
-
-            connection.close();
         } catch (SQLException e) {
             System.out.println("erreur lors de la modif de la discussion \n " + e.getMessage());
         }
