@@ -4,26 +4,29 @@
  */
 package Entities;
 
+import java.util.Date;
 import java.util.logging.Logger;
+import java.time;
 
 /**
  *
  * @author user
  */
 public class Postulation {
-    private String Date;
+    private Date Date;
     private String Simple_user;
     private String Email;
-    
-    public Postulation(String Date, String Simple_user, String Email) {
+
+    public Postulation(Date Date, String Simple_user, String Email) {
         this.Date = Date;
         this.Simple_user = Simple_user;
         this.Email = Email;
     }
+    
 
     public Postulation(){
 }
-    public String getDate() {
+    public Date getDate() {
         return Date;
     }
 
@@ -35,7 +38,8 @@ public class Postulation {
         return Email;
     }
 
-    public void setDate(String Date) {
+  
+    public void setDate(Date Date) {
         this.Date = Date;
     }
 

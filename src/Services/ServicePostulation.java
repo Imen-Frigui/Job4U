@@ -10,6 +10,7 @@ import Utils.MyDB;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ import java.util.logging.Logger;
 public class ServicePostulation implements IServicePostulation {
     Connection connection;
     Statement ste;
+    private java.util.Date date;
     public ServicePostulation(){
         connection=MyDB.getInstance().getCon();
     }
@@ -33,7 +35,7 @@ public class ServicePostulation implements IServicePostulation {
     public void ajouter(Postulation p)   {
         try {
             PreparedStatement pre = (PreparedStatement) connection.prepareStatement("INSERT INTO `postulation`(`Date`, `Simple_user`, `Email`) VALUES (?,?,?)");
-            pre.setString(1, p.getDate());
+            pre.setDate(1, (Date) p.getDate());
             pre.setString(2, p.getSimple_user());
             pre.setString(3, p.getEmail());
             pre.executeUpdate();
@@ -57,7 +59,7 @@ public class ServicePostulation implements IServicePostulation {
          public void supprimer(Postulation p){
         try {
             ste=(Statement) connection.createStatement();
-            String req_update=("DELETE FROM `postulation` WHERE 0");
+            String req_update=("DELETE FROM `postulation` WHERE Date ='hhh';");
             ste.executeUpdate(req_update);
         } catch (SQLException ex) {
             Logger.getLogger(ServicePostulation.class.getName()).log(Level.SEVERE, null, ex);
@@ -71,13 +73,13 @@ public class ServicePostulation implements IServicePostulation {
         ArrayList<Postulation> listpos = new ArrayList<>();
         try{
         ste= (Statement) connection.createStatement();
-        String req_select="SELECT * FROM `postulation`";
+        String req_select="SELECT `Date`, `Simple_user`, `Email` FROM `postulation` WHERE Date='jhjh';";
         ResultSet res = ste.executeQuery(req_select);
         while(res.next()){
             String Date = res.getString("Date");
             String Simple_user = res.getString(3);
             String Email = res.getString("Email");
-            Postulation p = new Postulation(Date,Simple_user,Email);
+            Postulation p = new Postulation(date,Simple_user,Email);
             listpos.add(p);
         }
         }catch(SQLException ex){
