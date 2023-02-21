@@ -17,4 +17,4 @@ a local java application for finding and offering jobs:
 - Chat
 
 
-/** under Pidev project for 1st ear in computer science"
+/** under Pidev project for 1st ear in computer science **/
