@@ -17,7 +17,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-
+import java.util.stream.*;
+import java.util.stream.Stream;
 import services.ServiceUser;
 import entities.User;
 import java.sql.ResultSet;
@@ -45,8 +46,18 @@ import javafx.scene.input.MouseEvent;
 import utils.MyConnection;
 import services.InformationsSupplementairesService;
 import entities.InformationsSupplementaires;
+import java.io.File;
 import javafx.stage.Stage;
 import javafxgestionuser.AfficherUser1Controller;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
+import java.util.Scanner;
 
 /**
  *
@@ -55,7 +66,6 @@ import javafxgestionuser.AfficherUser1Controller;
 public class FXMLDocumentController implements Initializable {
 
     private Label label;
-    @FXML
     private TextField tfId;
     @FXML
     private TextField tfNom;
@@ -105,11 +115,13 @@ public class FXMLDocumentController implements Initializable {
     private Hyperlink btn_afficher_profile;
     @FXML
     private Hyperlink deconnecter;
+    @FXML
+    private Button btn_enregistrer;
 
     //hedhom eli tra fihom hedhom declarations graphiques taaa eli mawjoud fil scene buolder
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        String[] items = {"Chef Entreprise", "Candidat", "Admin"};
+        String[] items = {"Chef Entreprise", "Candidat"};
         comboRole.getItems().addAll(items);
         comboRole.setOnAction(event -> {
             String data = comboRole.getSelectionModel().getSelectedItem().toString();});
@@ -132,7 +144,7 @@ public class FXMLDocumentController implements Initializable {
             tableUsers.setEditable(true);//t9olo les element fil tableau etidable wella la!,
             password.setCellFactory(TextFieldTableCell.forTableColumn());
             email.setCellFactory(TextFieldTableCell.forTableColumn());
-            role.setCellFactory(TextFieldTableCell.forTableColumn());
+           // role.setCellFactory(TextFieldTableCell.forTableColumn());
             
             
             
@@ -151,6 +163,9 @@ public class FXMLDocumentController implements Initializable {
                 }
 
             });
+        calculerNombreParRole();
+        TrierParNom();
+        
         
     }
 
@@ -158,13 +173,14 @@ public class FXMLDocumentController implements Initializable {
     private void ajouter(ActionEvent event) {
         System.out.println("Bontton Ajouter Lu");
         ServiceUser us = new ServiceUser();
-        Integer idu = Integer.parseInt(tfId.getText());
+       //Integer idu = Integer.parseInt(tfId.getText());
         String Nom = tfNom.getText();
         String Prenom = tfPrenom.getText();
         String Email = tfEmail.getText();
         String Password = tfPwd.getText();
-        String Role = comboRole.getValue();
-        User u = new User(idu, Nom, Prenom, Email, Password, Role);
+        String Role22 = comboRole.getValue();
+        User u = new User(Nom, Prenom,Email,Password,Role22);
+        System.out.println(u);
         us.ajouter2(u);
         refresh(event);
 
@@ -172,16 +188,19 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void modifier(ActionEvent event) {
+        
         System.out.println("Bontton Modif Lu");
         ServiceUser us = new ServiceUser();
 
-        int id = Integer.parseInt(tfId.getText());
+        int idu = tableUsers.getSelectionModel().getSelectedItems().get(0).getId();
+        System.out.println(idu);
         String Nom = tfNom.getText();
         String Prenom = tfPrenom.getText();
         String Email = tfEmail.getText();
         String Password = tfPwd.getText();
-        String Role = comboRole.getValue();
-        User u = new User(id, Nom, Prenom, Email, Password, Role);
+        String Role22 = comboRole.getValue();
+        User u = new User(idu,Nom, Prenom, Email, Password, Role22);
+        
         us.ModifierUser(u);
 
     }
@@ -199,9 +218,22 @@ public class FXMLDocumentController implements Initializable {
             ServiceUser us = new ServiceUser();
             InformationsSupplementairesService InfosService = new InformationsSupplementairesService();
             int id = uselected.getId();
+            
             User u1 = us.ChercherParId(id);
-            InformationsSupplementaires inf1 = InfosService.chercherparid(id);
-            System.out.println(inf1.getLien_icon());
+            System.out.println(u1);
+            System.out.println(u1);
+                       int idS = us.ChercherParMail(u1.getMail()).getId();
+                       System.out.println(idS);
+                       System.out.println(idS);
+                       System.out.println(idS);
+            InformationsSupplementaires inf1 = InfosService.chercherparid(idS);
+            
+  
+            
+            System.out.println(inf1);
+            System.out.println(inf1);
+            System.out.println(inf1);
+///            System.out.println(inf1.getLien_icon());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherUser1.fxml"));
             Parent root = loader.load();
             AfficherUser1Controller ctrl = loader.getController();
@@ -209,8 +241,8 @@ public class FXMLDocumentController implements Initializable {
          //b7okem lezemna non9lo el data mil scene el scene , aamalna fonction thez les datas hedhoukom lel scene el jdide
          //lezmek ta3ayat nefs el fonction 8adika bich  trecuperihom 8adi
          
-            ctrl.MyFunction(uselected.getNom(), uselected.getPrenom(), inf1.getTell(), uselected.getMail(), uselected.getPassword(), uselected.getRole(),"file:///C:/Users/user/Pictures/ProjetMEDECIN/medecinglade1.png");
-            ctrl.JibliUser(uselected.getNom(), uselected.getPrenom(), uselected.getMail(), uselected.getPassword(), uselected.getRole());
+            ctrl.MyFunction(uselected.getNom(), uselected.getPrenom(), inf1.getTell(), uselected.getMail(), uselected.getPassword(), uselected.getRole(),"/Images/home.png");
+          //  ctrl.JibliUser(uselected.getNom(), uselected.getPrenom(), uselected.getMail(), uselected.getPassword(), uselected.getRole());
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
@@ -229,7 +261,8 @@ public class FXMLDocumentController implements Initializable {
 
         System.out.println("Bontton supprimer Lu");
         ServiceUser us = new ServiceUser();
-        Integer idu = Integer.parseInt(tfId.getText());
+            int idu = tableUsers.getSelectionModel().getSelectedItems().get(0).getId();
+        
         //inti hne keteb int idu fi wistha Ineteger hedheka alech howa ma9rach el button
         //ena tw raditha Integer idu bich mchetli ou maadesh t7ot el int idu
         us.SupprimerUser(idu);
@@ -280,7 +313,7 @@ public class FXMLDocumentController implements Initializable {
         String mail = tableUsers.getSelectionModel().getSelectedItems().get(0).getMail();
         String password = tableUsers.getSelectionModel().getSelectedItems().get(0).getPassword();
         String role = tableUsers.getSelectionModel().getSelectedItems().get(0).getRole();
-        this.tfId.setText(String.valueOf(id));
+   
         this.tfNom.setText(nom);
         this.tfPrenom.setText(prenom);
         this.tfEmail.setText(mail);
@@ -303,5 +336,93 @@ public class FXMLDocumentController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(InscriptionConnexionController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void calculerNombreParRole(){
+        
+        int nbreCandidats=0;
+        int nbreChefEntreprises=0;
+        
+          ServiceUser us = new ServiceUser();
+        ObservableList<User> list = FXCollections.observableArrayList();
+        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+        email.setCellValueFactory(new PropertyValueFactory<>("mail"));
+        password.setCellValueFactory(new PropertyValueFactory<>("password"));
+        role.setCellValueFactory(new PropertyValueFactory<>("role"));
+        list.addAll(us.afficher());
+        for (User user : list) {
+            if ("Candidat".equals(user.getRole())) {
+                nbreCandidats+=1;
+                
+            }
+            if ("Chef Entreprise".equals(user.getRole())) {
+                nbreChefEntreprises+=1;
+            }
+        }
+        System.out.println(nbreCandidats);
+        System.out.println(nbreChefEntreprises);
+        
+    }
+
+    @FXML
+    private void On_stats_users(ActionEvent event) {
+        
+           try {
+            //taawed thezzek lel inscription
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("StatsUsers.fxml"));
+            Parent root = loader.load();
+            deconnecter.getScene().setRoot(root);
+        } catch (IOException ex) {
+            Logger.getLogger(InscriptionConnexionController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    public void TrierParNom(){
+          ServiceUser us = new ServiceUser();
+        ObservableList<User> list = FXCollections.observableArrayList();
+        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+        email.setCellValueFactory(new PropertyValueFactory<>("mail"));
+        password.setCellValueFactory(new PropertyValueFactory<>("password"));
+        role.setCellValueFactory(new PropertyValueFactory<>("role"));
+        list.addAll(us.afficher());
+       
+        System.out.println(list);
+        
+    }
+
+    @FXML
+    private void saveFile(ActionEvent event) {
+        
+             ServiceUser us = new ServiceUser();
+        ObservableList<User> list = FXCollections.observableArrayList();
+        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+        email.setCellValueFactory(new PropertyValueFactory<>("mail"));
+        password.setCellValueFactory(new PropertyValueFactory<>("password"));
+        role.setCellValueFactory(new PropertyValueFactory<>("role"));
+        list.addAll(us.afficher());
+        
+        FileChooser fileChooser = new FileChooser();
+        
+          File file = fileChooser.showSaveDialog(new Stage());
+        if(file != null){
+            saveSystem(file, list);
+        }
+    }
+
+     public void saveSystem(File file, ObservableList<User> list ){
+        try {
+            PrintWriter printWriter = new PrintWriter(file);
+            printWriter.write(list.toString());
+            printWriter.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 }

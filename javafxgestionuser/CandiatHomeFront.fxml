@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="javafxgestionuser.CandiatHomeFrontController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="1024.0" prefWidth="1873.0">
+         <styleClass>
+            <String fx:value="mainFxmlClass" />
+            <String fx:value="backgroundFront" />
+         </styleClass>
+         <children>
+            <Pane prefHeight="95.0" prefWidth="1925.0" style="-fx-background-color: white;">
+               <children>
+                  <Hyperlink fx:id="btn_entreprises" focusTraversable="false" layoutX="1004.0" layoutY="29.0" onAction="#viewEntreprises" prefHeight="29.0" prefWidth="101.0" text="Entreprises" textFill="#1b1a1a">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="lien_postulation" focusTraversable="false" layoutX="1426.0" layoutY="23.0" onAction="#GestionPostulation" prefHeight="40.0" prefWidth="259.0" text="Gestion Postulations" textFill="#1b1a1a">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <Separator layoutX="1176.0" layoutY="2.0" orientation="VERTICAL" prefHeight="92.0" prefWidth="8.0" />
+                  <Separator layoutX="1357.0" layoutY="2.0" orientation="VERTICAL" prefHeight="92.0" prefWidth="8.0" />
+                  <Separator layoutX="969.0" layoutY="4.0" orientation="VERTICAL" prefHeight="89.0" prefWidth="8.0" />
+                  <MenuButton fx:id="menu_compte" layoutX="1733.0" layoutY="20.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="121.0" style="-fx-background-color: none; -fx-border-style: none; -fx-alignment: center;" text="Compte" textAlignment="CENTER">
+                     <items>
+                        <MenuItem fx:id="profil" mnemonicParsing="false" onAction="#profil" text="Profil" />
+                        <MenuItem fx:id="deconnecter" mnemonicParsing="false" onAction="#deconnecter" text="Se déconnecter" />
+                     </items>
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/user.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </MenuButton>
+                  <Hyperlink fx:id="btn_jobs" focusTraversable="false" layoutX="1241.0" layoutY="26.0" onAction="#view_jobs" prefHeight="34.0" prefWidth="51.0" text="Jobs" textFill="#1b1a1a">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <ImageView fitHeight="79.0" fitWidth="232.0" layoutX="192.0" layoutY="7.0">
+                     <image>
+                        <Image url="@../Images/iconJobForYou22.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <ImageView fitHeight="171.0" fitWidth="1925.0" layoutY="93.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../Images/photo.PNG" />
+               </image>
+            </ImageView>
+            <Label fx:id="id_ID" layoutX="701.0" layoutY="105.0" scaleX="2.0" scaleY="2.0" text="id_user" visible="false" />
+            <AnchorPane fx:id="home" layoutY="930.0" prefHeight="55.0" prefWidth="1211.0" styleClass="backgroundFooter">
+               <children>
+                  <Label layoutX="541.0" layoutY="13.0" styleClass="backgroundFooter" text="Job For You Inc@." textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

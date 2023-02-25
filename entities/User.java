@@ -29,14 +29,17 @@ public class User {
         
         this.role = role;
     }
-       public User(int id, String nom, String prenom,  String mail,String password) {
-        this.id = id;
+       public User( String nom, String prenom, String mail, String password, String Role) {
+ 
         this.nom = nom;
         this.prenom = prenom;
         this.mail = mail;
         this.password = password;
+        this.role=Role;
   
     }
+    
+      
     
      public User(String mail,String password ) {
         this.password = password;

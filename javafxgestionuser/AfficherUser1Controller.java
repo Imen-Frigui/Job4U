@@ -4,6 +4,7 @@
  */
 package javafxgestionuser;
 
+import com.sun.scenario.effect.impl.prism.PrFilterContext;
 import javafxgestionuser.FXMLDocumentController;
 import entities.InformationsSupplementaires;
 import entities.User;
@@ -123,7 +124,6 @@ public class AfficherUser1Controller {
             }
             //int user_id, String nom, String prenom, String tell
 
-  
 
             InformationsSupplementaires infoedit = new InformationsSupplementaires(id, nom, prenom, tell);
             User useredit = new User (id,nom,prenom,mail,MotdePasse,"Candidat");
@@ -132,6 +132,11 @@ public class AfficherUser1Controller {
             useredit.setPassword(CryptagePwd.hashpw(motdepasseinput.getText(), CryptagePwd.gensalt()));
             ServiceUser u_service = new ServiceUser();
             InformationsSupplementairesService i_service = new InformationsSupplementairesService();
+            
+            System.out.println(useredit);
+            System.out.println(useredit);
+            System.out.println(useredit);
+            
             u_service.ModifierUser(useredit);
             i_service.update(infoedit);
             System.out.println(useredit);
@@ -141,9 +146,10 @@ public class AfficherUser1Controller {
             alert.setHeaderText("Profil modifié");
             alert.setContentText("Profil modifié");
             alert.showAndWait();
+            
         });
-
-    }
+}
+    
 
     void MyFunction(String nom, String prenom, String Tell, String mail, String password, String role , String image ) {
 
@@ -157,10 +163,11 @@ public class AfficherUser1Controller {
 
         telvalue.setText(Tell);
         
-       profilimage.setImage(new Image(image));
+        profilimage.setImage(new Image(image));
+      // profilimage.setImage(new Image(getClass().getResourceAsStream(image)));
 
     }
-
+/*
     User JibliUser(String nom, String prenom, String mail, String password, String role) {
         ServiceUser us = new ServiceUser();
 
@@ -169,7 +176,7 @@ public class AfficherUser1Controller {
         return u;
 
     }
-
+*/
     public void initialize(URL url, ResourceBundle rb) {
 
     }

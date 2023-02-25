@@ -46,6 +46,7 @@ import utils.CryptagePwd;
 import org.apache.commons.validator.routines.EmailValidator;
 import services.InformationsSupplementairesService;
 import utils.MailTool;
+import javafxgestionuser.PageAcceuilController;
 
 /**
  * FXML Controller class
@@ -91,7 +92,7 @@ public class InscriptionConnexionController implements Initializable {
     private AnchorPane codeveirform;
     @FXML
     private Button btn_crea_co2;
-      String code = genererCode() ;
+    String code = genererCode();
     @FXML
     private TextField codealpha;
     @FXML
@@ -151,23 +152,34 @@ public class InscriptionConnexionController implements Initializable {
         } else {
             String hashedPassword = CryptagePwd.hashpw(inscription_mot_de_passe.getText(), CryptagePwd.gensalt());
 
-           //estaamlna el cryptage des passwords betbi3a bich tkoun securise
-            User userforInformation = us.ChercherParMail(inscription_email.getText());
+            String Nom = tfNom.getText();
+            String Prenom = tfPrenom.getText();
+            String Email = inscription_email.getText();
+            String Password = inscription_mot_de_passe.getText();
+            String Role22 = "none";
+            User u2= new User(Nom, Prenom, Email, Password, Role22);
+
+        
             //lawajna 3al user bil email ou iraja3li user objet keemel bil les attributs ta3o el kooll
             InformationsSupplementairesService information_ss = new InformationsSupplementairesService();
             //3ayatna lel info sups services
             //information_ss.AjouterInformation(new InformationsSupplementaires(userforInformation.getId()));
-            us.ajouter2(userforInformation);
+            us.ajouter2(u2);
             //ajoutina el user fil info_supp b7okem da5al el image ou noumro el telifoun
             //ki naamlo inscrption raho mayatzedech fil table user 5ater howa deja mawjoud min 3and el admine
             //raho yetzed fil table infos_supps
             //el user inajam yaamal inscrption fi ey lahdha ou ibadal ismo ou la9abo amma el id yo93ed howa bido (The NickName Law)
-            int id = userforInformation.getId();
-            String nom=tfNom.getText();
-            String prenom =tfPrenom.getText();
-            String tell =tfTell.getText();
+            int id = us.ChercherParMail(Email).getId();
+            System.out.println(id);
+            System.out.println(id);
+            System.out.println(id);
+            System.out.println(id);
+            String nom = tfNom.getText();
+            String prenom = tfPrenom.getText();
+            String tell = tfTell.getText();
             
-            InformationsSupplementaires IS= new InformationsSupplementaires(id, nom, prenom, tell,"C:\\Users\\user\\Documents\\NetBeansProjects\\JavaFXGestionUser\\src\\Images\\userr.jfif");
+
+            InformationsSupplementaires IS = new InformationsSupplementaires(id, nom, prenom, tell, "C:\\Users\\user\\Documents\\NetBeansProjects\\JavaFXGestionUser\\src\\Images\\userr.jfif");
             information_ss.AjouterInformation(IS);
             //alert de confirmation eli el user jawo behi
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -217,7 +229,9 @@ public class InscriptionConnexionController implements Initializable {
         }
 
         User u = us.ChercherParMail(connexion_email.getText());
-        if (CryptagePwd.checkpw(connexion_mot_de_passe.getText(), u.getPassword()) == false) {
+       
+
+        if (!connexion_mot_de_passe.getText().equals(u.getPassword())) {
 //hedheya systeme de suspension (suspendre fi wa9t mou3ayan) tsir wa9telli le mot de passe 8alat
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("compte introuvable");
@@ -249,35 +263,51 @@ public class InscriptionConnexionController implements Initializable {
                 }, new Date(), 1000);
             }
 
-            if (u.getRole().compareTo("chef entreprise") == 0 || u.getRole().compareTo("candidat") == 0) {
-                try {
-                    //hedhi tsir wa9t el intergation
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("HomepageFront.fxml"));
-                    Parent root = loader.load();
-                    connexion_email.getScene().setRoot(root);
-                } catch (IOException ex) {
-                    Logger.getLogger(InscriptionConnexionController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } else if (u.getRole().compareTo("admin") == 0) {
-                try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("HomepageBack.fxml"));
-                    Parent root = loader.load();
-                    connexion_email.getScene().setRoot(root);
-                } catch (IOException ex) {
-                    Logger.getLogger(InscriptionConnexionController.class.getName()).log(Level.SEVERE, null, ex);
+           
+            
 
-                }
+        }
+          else if (u.getRole().compareTo("none") == 0) {
+            try {
+                //hedhi tsir wa9t el intergation
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("PageAcceuil.fxml"));
+                Parent root = loader.load();
+                connexion_email.getScene().setRoot(root);
+                 PageAcceuilController ctrl = loader.getController();
+                   User Ualpha=ctrl.JibliUser2(u.getMail());
+                  us.ModifierUser(Ualpha);
+                     System.out.println("Min 3and el login" + Ualpha);
+            } catch (IOException ex) {
+                Logger.getLogger(InscriptionConnexionController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+        else if (u.getRole().compareTo("Candidat") == 0) {
+            try {
+                //hedhi tsir wa9t el intergation
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("CandiatHomeFront.fxml"));
+                Parent root = loader.load();
+                connexion_email.getScene().setRoot(root);
+            } catch (IOException ex) {
+                Logger.getLogger(InscriptionConnexionController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else if (u.getRole().compareTo("Chef Entreprise") == 0) {
+            try {
+                //hedhi tsir wa9t el intergation
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("ChefEntrepriseHomeFront.fxml"));
+                Parent root = loader.load();
+                connexion_email.getScene().setRoot(root);
+            } catch (IOException ex) {
+                Logger.getLogger(InscriptionConnexionController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }
 
     }
 
-   
     @FXML
     private void resetpassword(ActionEvent event) {
-        
-        
+
         cnxform.setDisable(true);
         cnxform.setOpacity(0);
         resetpasswordform.setOpacity(1);
@@ -300,16 +330,12 @@ public class InscriptionConnexionController implements Initializable {
 
         } else {
 
-
-            
-
-            String message =  code ;
+            String message = code;
             lbl_code.setText(message);
 
-            
             try {
-           //    MailTool.sendMail(emailresetvalue.getText(), subject, message);////////////ouhe
-           lbl_code.setText(message);
+                //    MailTool.sendMail(emailresetvalue.getText(), subject, message);////////////ouhe
+                lbl_code.setText(message);
                 lbl_code.setText(message);
                 codeveirform.setDisable(false);
                 codeveirform.setOpacity(1);
@@ -326,33 +352,30 @@ public class InscriptionConnexionController implements Initializable {
         }
 
     }
-    
-    
-    
-    String genererCode (){
-        
-                    int leftLimit = 48; // numeral '0'
-            int rightLimit = 122; // letter 'z'
-            int targetStringLength = 7;
-            Random random = new Random();
+
+    String genererCode() {
+
+        int leftLimit = 48; // numeral '0'
+        int rightLimit = 122; // letter 'z'
+        int targetStringLength = 7;
+        Random random = new Random();
 //generation d'un code aleatoire
-            String code = random.ints(leftLimit, rightLimit + 1)
-                    .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
-                    .limit(targetStringLength)
-                    .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-                    .toString();
-        
+        String code = random.ints(leftLimit, rightLimit + 1)
+                .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
+                .limit(targetStringLength)
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
+
         return code;
-        
+
     }
 
-      @FXML
+    @FXML
     private void verifcode(ActionEvent event) {
         System.out.println("le code est :" + code);
         System.out.println("le code est :" + code);
         System.out.println("le code est :" + code);
-        
-        
+
         if (codealpha.getText().compareTo(code) != 0) {
             System.out.println(code);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -360,7 +383,6 @@ public class InscriptionConnexionController implements Initializable {
             alert.setHeaderText("code non valid ");
             alert.setContentText(" ");
             alert.showAndWait();
-           
 
         } else {
             System.out.println(code);
@@ -373,8 +395,7 @@ public class InscriptionConnexionController implements Initializable {
             doublepasswordform.setDisable(false);
         }
     }
-    
-    
+
     @FXML
     private void updatemotdepasse(ActionEvent event) {
         if (resetpasswordvalue1.getText().compareTo("") == 0) {
@@ -419,34 +440,30 @@ public class InscriptionConnexionController implements Initializable {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-  
-
     @FXML
     private void insert_image(ActionEvent event) {
-        
-            FileChooser fileChooser = new FileChooser();
+
+        FileChooser fileChooser = new FileChooser();
         File selectedFile = fileChooser.showOpenDialog(new Stage());
-                try {
-                BufferedImage bufferedImage = ImageIO.read(selectedFile);
-                Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-                User_image.setImage(image);
-                String uniqueid = UUID.randomUUID().toString();
-                System.out.println("\n" + uniqueid);
-                
-                System.out.println(selectedFile.getPath());
-                String extension= FilenameUtils.getExtension(selectedFile.getAbsolutePath());
-              
-                Path tmp = Files.move(Paths.get(selectedFile.getPath()),
-                     
-                       Paths.get("file:///C:/Users/user/Documents/NetBeansProjects/JavaFXGestionUser/src/Images "+uniqueid+"."+extension));
-              System.out.print(tmp);
-              
-               
-              c.setLien_icon(uniqueid+"."+extension);
-                
-                } catch (IOException ex) {
-                    System.out.print(ex.getMessage());
-                
-            }
+        try {
+            BufferedImage bufferedImage = ImageIO.read(selectedFile);
+            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+            User_image.setImage(image);
+            String uniqueid = UUID.randomUUID().toString();
+            System.out.println("\n" + uniqueid);
+
+            System.out.println(selectedFile.getPath());
+            String extension = FilenameUtils.getExtension(selectedFile.getAbsolutePath());
+
+            Path tmp = Files.move(Paths.get(selectedFile.getPath()),
+                    Paths.get("file:///Users/user/Documents/NetBeansProjects/JavaFXGestionUser/src/Images " + uniqueid + "." + extension));
+            System.out.print(tmp);
+
+            c.setLien_icon( uniqueid + "." + extension);
+
+        } catch (IOException ex) {
+            System.out.print(ex.getMessage());
+
+        }
     }
 }

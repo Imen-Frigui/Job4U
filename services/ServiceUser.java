@@ -69,14 +69,14 @@ public class ServiceUser {
 
     public void ajouter2(User u) {
         try {
-            PreparedStatement pre = connection.prepareStatement("INSERT INTO `pidevusers`.`users` (`Id`,`Nom`,`Prenom`,`Mail`,`Password`,`Role`) VALUES (?,?,?,?,?,?)");
+            PreparedStatement pre = connection.prepareStatement("INSERT INTO `pidevusers`.`users` (`Nom`,`Prenom`,`Mail`,`Password`,`Role`) VALUES (?,?,?,?,?)");
 
-            pre.setInt(1, u.getId());
-            pre.setString(2, u.getNom());
-            pre.setString(3, u.getPrenom());
-            pre.setString(4, u.getMail());
-            pre.setString(5, u.getPassword());
-            pre.setString(6, u.getRole());
+           
+            pre.setString(1, u.getNom());
+            pre.setString(2, u.getPrenom());
+            pre.setString(3, u.getMail());
+            pre.setString(4, u.getPassword());
+            pre.setString(5, u.getRole());
 
             pre.executeUpdate();
         } catch (SQLException ex) {
@@ -122,7 +122,7 @@ public class ServiceUser {
 
             PreparedStatement pre = connection.prepareStatement("UPDATE users SET nom=?,prenom=?,mail=?,password=?,role=? WHERE id = ?");
 
-            pre.setString(1, u.getNom());
+           pre.setString(1, u.getNom());
             pre.setString(2, u.getPrenom());
             pre.setString(3, u.getMail());
             pre.setString(4, u.getPassword());
@@ -165,6 +165,29 @@ public class ServiceUser {
             System.out.print(ex.getMessage());
         }
         return null;
+    }
+    
+    
+     public int CountUsersPerRole(String Role) {
+
+        int i = 0;
+        String requete = "SELECT * FROM users where role= ?  ";
+
+        try {
+            PreparedStatement pst = connection.prepareStatement(requete);
+            pst.setString(1,Role);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+             i=i+1;
+            }
+          
+         return i; 
+         
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return i;
     }
 
    

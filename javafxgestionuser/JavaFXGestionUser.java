@@ -25,6 +25,9 @@ import utils.MyConnection;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 
+import java.io.File;
+import java.io.IOException;
+
 
 
 /**
@@ -35,13 +38,20 @@ public class JavaFXGestionUser extends Application {
     
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("GestionUsers.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("InscriptionConnexion.fxml"));
         
         Scene scene = new Scene(root);
         primaryStage.setTitle("JobForYou");
         primaryStage.setScene(scene);
             primaryStage.show();
         
+            
+             File file = new File("src\\Images\\text.txt");
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
       
     }
 

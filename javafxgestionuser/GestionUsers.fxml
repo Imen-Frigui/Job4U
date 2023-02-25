@@ -16,13 +16,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="1001.0" prefWidth="1934.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxgestionuser.FXMLDocumentController">
    <children>
-      <TextField fx:id="tfId" layoutX="460.0" layoutY="296.0" prefHeight="31.0" prefWidth="199.0" />
       <TextField fx:id="tfNom" layoutX="460.0" layoutY="361.0" prefHeight="31.0" prefWidth="199.0" />
       <TextField fx:id="tfPrenom" layoutX="460.0" layoutY="426.0" prefHeight="31.0" prefWidth="199.0" />
       <TextField fx:id="tfEmail" layoutX="460.0" layoutY="491.0" prefHeight="31.0" prefWidth="199.0" />
       <TextField fx:id="tfPwd" layoutX="460.0" layoutY="554.0" prefHeight="31.0" prefWidth="199.0" />
       <ComboBox fx:id="comboRole" layoutX="456.0" layoutY="632.0" prefHeight="19.0" prefWidth="206.0" />
-      <Label layoutX="396.0" layoutY="301.0" prefHeight="21.0" prefWidth="38.0" text="Id" />
       <Label layoutX="378.0" layoutY="361.0" prefHeight="21.0" prefWidth="58.0" text="Nom" />
       <Label layoutX="379.0" layoutY="431.0" prefHeight="21.0" prefWidth="58.0" text="Prenom" />
       <Label layoutX="379.0" layoutY="496.0" prefHeight="21.0" prefWidth="58.0" text="Email" />
@@ -60,7 +58,7 @@
                   <Image url="@../Images/statline.png" />
                </image>
             </ImageView>
-            <Hyperlink fx:id="gestion_stat" layoutX="46.0" layoutY="182.0" prefHeight="29.0" prefWidth="222.0" text="Gestion des statistiques" textFill="WHITE">
+            <Hyperlink fx:id="gestion_stat" layoutX="46.0" layoutY="182.0" onAction="#On_stats_users" prefHeight="29.0" prefWidth="222.0" text="Gestion des statistiques" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
@@ -122,5 +120,6 @@
             <Image url="@../Images/iconJobForYou22.jpg" />
          </image>
       </ImageView>
+      <Button fx:id="btn_enregistrer" layoutX="468.0" layoutY="837.0" mnemonicParsing="false" onAction="#saveFile" prefHeight="48.0" prefWidth="206.0" style="-fx-background-color: #6EFF5E;" text="Enregistrer Fichier" />
    </children>
 </AnchorPane>
