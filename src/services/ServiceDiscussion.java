@@ -127,4 +127,22 @@ public class ServiceDiscussion implements IServiceDiscussion<Discussion> {
         }
         return discussion;
     }
+    
+    public ArrayList<Discussion> Search (String search){
+            ArrayList<Discussion> discussion = new ArrayList<>();
+        try{
+            PreparedStatement p = connection.prepareStatement("Select `discussion`.`id_disc`,`discussion`.`id_sender`,`discussion`.`id_reciver` FROM `users` JOIN `Discussion` WHERE `users`.`Nom` LIKE ? OR `users`.`Prenom` LIKE ?");
+            p.setString(1,"%"+search+"%");
+            p.setString(2,"%"+search+"%");
+
+            ResultSet r = p.executeQuery();
+            while(r.next()){
+                discussion.add(new Discussion(r.getInt(1),r.getInt(2),r.getInt(3)));
+        }
+        } catch (SQLException ex) {
+            System.out.println("Erreur lors d'extraction des données \n" + ex.getMessage());
+        }
+            return discussion;
+
+    }
 }
