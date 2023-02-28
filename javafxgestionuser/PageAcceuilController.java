@@ -20,10 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafxgestionuser.InscriptionConnexionController;
 import org.apache.pdfbox.Loader;
-
-
-
-
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -32,92 +29,110 @@ import org.apache.pdfbox.Loader;
  */
 public class PageAcceuilController implements Initializable {
 
-      
-
     @FXML
     private ImageView clk_img_candiat;
     @FXML
     private ImageView clk_img_entreprise;
+    public String email;
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
-    
-     private int Roletest=2;
+    static int Roletest = 2;
+    static int ClickImage = 2;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //  ServiceUser us = new ServiceUser();
-        
+        Roletest = 2;
+        ClickImage = 2;
+        System.out.println(Roletest);
+        System.out.println(getEmail());
+
     }
 
     @FXML
-    public boolean goToFreelancer(MouseEvent event) throws IOException {
+    public int goToFreelancer(MouseEvent event) throws IOException {
+        ServiceUser service = new ServiceUser();
+        System.out.println("min aand el InscriptionConnection" + email);
+        System.out.println("min aand el InscriptionConnection" + email);
+         System.out.println("min aand el InscriptionConnection" + email);
+      
+            User Ualpha = JibliUser2(email);
+            Ualpha.setRole("Candidat");
+            service.ModifierUser(Ualpha);
 
-         Roletest =1;
-         changerValeurRole(Roletest);
+        
+
+        System.out.println("min aand goToFreelancer" + Roletest);
+
+        Roletest = 1;
+        System.out.println("min aand goToFreelancer" + Roletest);
+        ClickImage = 0;
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CandiatHomeFront.fxml"));
         Parent root = loader.load();
         clk_img_candiat.getScene().setRoot(root);
-        System.out.println(Roletest);
-        return true;
+        System.out.println("min aand goToFreelancer" + Roletest);
+
+        return ClickImage;
     }
-    
-    
-     @FXML
-    public boolean goToChefEntreprise(MouseEvent event) throws IOException {
-        
-         Roletest =0;
-         changerValeurRole(Roletest);
+
+    @FXML
+    public int goToChefEntreprise(MouseEvent event) throws IOException {
+         ServiceUser service = new ServiceUser();
+          System.out.println("min aand el InscriptionConnection" + email);
+        System.out.println("min aand el InscriptionConnection" + email);
+         System.out.println("min aand el InscriptionConnection" + email);
+      
+            User Ualpha = JibliUser2(email);
+            Ualpha.setRole("Chef Entreprise");
+            service.ModifierUser(Ualpha);
+
+        Roletest = 0;
+        System.out.println("min aand goToChefEntreprise" + Roletest);
+
+        System.out.println("min aand goToChefEntreprise" + Roletest);
+        ClickImage = 1;
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ChefEntrepriseHomeFront.fxml"));
         Parent root = loader.load();
         clk_img_entreprise.getScene().setRoot(root);
-        
-        return true;
+
+        return ClickImage;
     }
 
-    
-    
-   
     public User JibliUser2(String mail) {
+
         ServiceUser us = new ServiceUser();
 
         User u = us.ChercherParMail(mail);
-       
+
         System.out.println(Roletest);
         System.out.println(u);
         System.out.println(u);
-
-        if (Roletest==1) {
+        System.out.println("min aand JibliUser2" + Roletest);
+        if (Roletest == 1 && ClickImage == 0) {
             u.setRole("Candidat");
 
             System.out.println(u);
-        } else if (Roletest==0) {
+        } else if (Roletest == 0) {
             u.setRole("Chef Entreprise");
             System.out.println(u);
         }
         return u;
 
     }
-
-    boolean changerValeurRole(int Roletest){
-        
-        
-        if(Roletest==1){
-            return true;
-            
-        }
-        else {
-            return false;
-        }
- 
-        
-        
-    }
-
-  
-   
 
 }

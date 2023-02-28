@@ -7,7 +7,9 @@ package javafxgestionuser;
 import entities.InformationsSupplementaires;
 import entities.User;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import services.ServiceUser;
 import java.io.IOException;
 import java.net.URL;
@@ -36,6 +38,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -112,6 +116,8 @@ public class InscriptionConnexionController implements Initializable {
     @FXML
     private Label lbl_code;
 
+    
+     InformationsSupplementaires p = new InformationsSupplementaires();
     /**
      * Initializes the controller class.
      */
@@ -267,16 +273,20 @@ public class InscriptionConnexionController implements Initializable {
             
 
         }
-          else if (u.getRole().compareTo("none") == 0) {
+          else if (u.getRole().equals("none")) {
             try {
                 //hedhi tsir wa9t el intergation
+                boolean test ;
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("PageAcceuil.fxml"));
                 Parent root = loader.load();
                 connexion_email.getScene().setRoot(root);
+              
                  PageAcceuilController ctrl = loader.getController();
-                   User Ualpha=ctrl.JibliUser2(u.getMail());
+                 
+                   ctrl.setEmail(u.getMail());
+                    User Ualpha=ctrl.JibliUser2(u.getMail());
                   us.ModifierUser(Ualpha);
-                     System.out.println("Min 3and el login" + Ualpha);
+                    System.out.println("Min 3and el login" + Ualpha);
             } catch (IOException ex) {
                 Logger.getLogger(InscriptionConnexionController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -439,7 +449,7 @@ public class InscriptionConnexionController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+/*
     @FXML
     private void insert_image(ActionEvent event) {
 
@@ -456,7 +466,7 @@ public class InscriptionConnexionController implements Initializable {
             String extension = FilenameUtils.getExtension(selectedFile.getAbsolutePath());
 
             Path tmp = Files.move(Paths.get(selectedFile.getPath()),
-                    Paths.get("file:///Users/user/Documents/NetBeansProjects/JavaFXGestionUser/src/Images " + uniqueid + "." + extension));
+                    Paths.get("C:/Utilisateurs/user/Documents/NetBeansProjects/JavaFXGestionUser/src/Images " + uniqueid + "." + extension));
             System.out.print(tmp);
 
             c.setLien_icon( uniqueid + "." + extension);
@@ -465,5 +475,31 @@ public class InscriptionConnexionController implements Initializable {
             System.out.print(ex.getMessage());
 
         }
+    }
+*/
+    
+       @FXML
+    private void insert_image(ActionEvent event) throws IOException {
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Ajouter une Image");
+        fc.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif"));
+        File f = fc.showOpenDialog(null);
+        String DBPath = "C:\\\\\\\\xampp2\\\\\\\\htdocs\\\\\\\\img\\\\\\\\"+f.getName();
+        String i = f.getName();
+        p.setLien_icon(i);
+        if (f != null){
+        BufferedImage bufferedImage = ImageIO.read(f);
+        WritableImage image = SwingFXUtils.toFXImage(bufferedImage,null);
+        ImageIO.write(bufferedImage, "png", new File(DBPath));
+        User_image.setImage(image);
+        FileInputStream fin =new FileInputStream(f);
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        byte[] buf = new byte [1024];
+        for (int readNum ;(readNum= fin.read(buf)) != -1 ;){
+            bos.write(buf,0,readNum);
+            byte[] user_image = bos.toByteArray();
+}
+        } 
     }
 }
