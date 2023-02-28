@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AddposteController">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="161.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true" />
+      <ComboBox fx:id="combodomaine" layoutX="771.0" layoutY="324.0" prefHeight="45.0" prefWidth="200.0" />
+      <TextField fx:id="tftitre" layoutX="283.0" layoutY="176.0" prefHeight="68.0" prefWidth="421.0" />
+      <TextArea fx:id="tfdesc" layoutX="276.0" layoutY="262.0" prefHeight="245.0" prefWidth="436.0" />
+      <ImageView fx:id="tfimage" fitHeight="150.0" fitWidth="200.0" layoutX="312.0" layoutY="514.0" pickOnBounds="true" preserveRatio="true" />
+      <Text fill="#dd0f43" layoutX="809.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Domaine du poste" wrappingWidth="174.6708984375">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#dd0f43" layoutX="108.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Objet du Poste" wrappingWidth="167.6708984375">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+      <Text fill="#dd0f43" layoutX="108.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contenu du Poste" wrappingWidth="174.6708984375">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Button fx:id="btn_select_image" layoutX="93.0" layoutY="556.0" mnemonicParsing="false" onAction="#btn_image_action" prefHeight="33.0" prefWidth="168.0" text="Joindre Image" />
+      <Button layoutX="704.0" layoutY="664.0" mnemonicParsing="false" onAction="#Add" prefHeight="68.0" prefWidth="168.0" text="Poster" textFill="#79292b">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Button>
+      <Label fx:id="image_link" layoutX="219.0" layoutY="643.0" text="Label" />
+      <Text fill="#780d57" layoutX="352.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exprimez Vous" textAlignment="CENTER" wrappingWidth="351.6708984375">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="ben" fitHeight="200.0" fitWidth="210.0" layoutX="800.0" layoutY="14.0" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/img.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorpane" prefHeight="800.0" prefWidth="1024.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AddcommentController">
+   <children>
+      <TextArea fx:id="descposte" editable="false" layoutX="166.0" layoutY="166.0" prefHeight="229.0" prefWidth="408.0" wrapText="true">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </TextArea>
+      <Label fx:id="tftitre" layoutX="177.0" layoutY="52.0" prefHeight="83.0" prefWidth="448.0" textAlignment="CENTER">
+         <font>
+            <Font size="47.0" />
+         </font>
+      </Label>
+      <ScrollPane fx:id="scrollpane" layoutX="156.0" layoutY="449.0" prefHeight="160.0" prefWidth="415.0" />
+      <TextArea fx:id="tfdesc" layoutX="600.0" layoutY="197.0" prefHeight="219.0" prefWidth="408.0" />
+      <Text fill="#7710d0" layoutX="641.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter  un Commentaire">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Button layoutX="723.0" layoutY="449.0" mnemonicParsing="false" onAction="#comment" text="Commenter" textFill="#033b51">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <Text fill="#208f93" layoutX="294.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Objet du poste">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Text fill="#208f93" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description Detaillée" textAlignment="CENTER" wrappingWidth="181.6708984375">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#208f93" layoutX="6.0" layoutY="491.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des Commentaires" textAlignment="CENTER" wrappingWidth="149.6875">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Button fx:id="aff" layoutX="271.0" layoutY="665.0" mnemonicParsing="false" onAction="#aff" text="Afficher Commentaires" />
+      <AnchorPane fx:id="imganch" layoutX="667.0" layoutY="538.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button layoutX="251.0" layoutY="707.0" mnemonicParsing="false" onAction="#affv" text="Afficher Vos Commentaires" />
+   </children>
+</AnchorPane>
