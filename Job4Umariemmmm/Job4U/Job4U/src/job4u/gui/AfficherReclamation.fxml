@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="job4u.gui.AfficherReclamationController">
+   <children>
+      <Label layoutX="173.0" layoutY="14.0" text="Liste de réclamations">
+         <font>
+            <Font size="25.0" />
+         </font></Label>
+      <TableView fx:id="ReclamationTable" layoutX="30.0" layoutY="70.0" prefHeight="271.0" prefWidth="541.0">
+        <columns>
+           <TableColumn fx:id="colMessage" prefWidth="150.0" text="Message" />
+          <TableColumn fx:id="colType" prefWidth="100.0" text="Type" />
+          <TableColumn fx:id="colStatut" prefWidth="100.0" text="Statut" />
+          <TableColumn fx:id="colUser" prefWidth="116.0" text="Utilisateur" />
+        </columns>
+      </TableView>
+        <Button fx:id="refreshButton" layoutX="30.0" layoutY="374.0" mnemonicParsing="false" text="Actualiser"  onAction="#handleRefreshButtonAction"/>
+ 
+      <ImageView fitHeight="58.0" fitWidth="155.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@324479206_724718092423349_726677446961725025_n.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

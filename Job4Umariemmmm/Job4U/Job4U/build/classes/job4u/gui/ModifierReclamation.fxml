@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" blendMode="MULTIPLY" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="job4u.gui.ModifierReclamationController">
+     <children>
+      <Pane prefHeight="400.0" prefWidth="610.0" style="-fx-background-color: blue;" >
+        <Label blendMode="DARKEN" layoutX="170.0" layoutY="31.0" prefHeight="49.0" prefWidth="250.0" text="Modifier une Reclamation" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="31.0">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+         <Button layoutX="448.0" layoutY="180.0" onAction="#modifier" prefHeight="64.0" prefWidth="127.0" text="Modifier">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+    
+      <Label layoutX="27.0" layoutY="144.0" prefHeight="21.0" prefWidth="143.0" text="Message">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+       <TextArea fx:id="message" layoutX="213.0" layoutY="137.0" prefHeight="200.0" prefWidth="200.0" />
+       </Pane>
+    </children> 
+</AnchorPane>
