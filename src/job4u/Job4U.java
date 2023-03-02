@@ -48,7 +48,12 @@ public class Job4U extends Application{
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        launch(args);
+       launch(args);
+        
+       // ServiceDiscussion s = new ServiceDiscussion();
+       
+        //System.out.println(s.Search("ah"));
+        
     }
 
     

@@ -44,6 +44,9 @@ private MyListener myListener;
         this.myListener = myListener;
         ServiceMessages smsg = new ServiceMessages();
         msg.setText(smsg.getMsgsByDissId(m.getId_disc()).get(index).getMessage());
+        if (m.getId_sender()!=3) {
+            msg.setStyle("-fx-background-color: grey;");
+                }
     }
     
     public void setMsgData(String data) {
