@@ -3,17 +3,15 @@
 <?import java.lang.String?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="javafxgestionuser.ChefEntrepriseHomeFrontController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxgestionuser.ChefEntrepriseHomeFrontController">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="1034.0" prefWidth="1935.0">
          <styleClass>
@@ -36,22 +34,6 @@
                   <Separator layoutX="1176.0" layoutY="2.0" orientation="VERTICAL" prefHeight="92.0" prefWidth="8.0" />
                   <Separator layoutX="1357.0" layoutY="2.0" orientation="VERTICAL" prefHeight="92.0" prefWidth="8.0" />
                   <Separator layoutX="969.0" layoutY="4.0" orientation="VERTICAL" prefHeight="89.0" prefWidth="8.0" />
-                  <MenuButton fx:id="menu_compte" layoutX="1733.0" layoutY="20.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="121.0" style="-fx-background-color: none; -fx-border-style: none; -fx-alignment: center;" text="Compte" textAlignment="CENTER">
-                     <items>
-                        <MenuItem fx:id="profil" mnemonicParsing="false" onAction="#profil" text="Profil" />
-                        <MenuItem fx:id="deconnecter" mnemonicParsing="false" onAction="#deconnecter" text="Se déconnecter" />
-                     </items>
-                     <graphic>
-                        <ImageView fitHeight="29.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Images/user.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </MenuButton>
                   <Hyperlink fx:id="btn_jobs" focusTraversable="false" layoutX="1241.0" layoutY="26.0" onAction="#view_jobs" prefHeight="34.0" prefWidth="51.0" text="Jobs" textFill="#1b1a1a">
                      <font>
                         <Font name="System Bold" size="15.0" />
@@ -67,6 +49,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Hyperlink>
+                  <Hyperlink fx:id="deconnecter" layoutX="1714.0" layoutY="34.0" onAction="#Lien_Logout" prefHeight="34.0" prefWidth="130.0" text="Logout" />
                </children>
             </Pane>
             <ImageView fitHeight="171.0" fitWidth="1935.0" layoutY="93.0" pickOnBounds="true">
@@ -80,7 +63,73 @@
                   <Label layoutX="541.0" layoutY="13.0" styleClass="backgroundFooter" text="Job For You Inc@." textFill="WHITE" />
                </children>
             </AnchorPane>
+            <Line endX="-100.0" endY="266.0" layoutX="407.0" layoutY="421.0" startX="-100.0" startY="-3.79290771484375" stroke="#5451ed" />
+            <Line endX="-100.0" endY="266.0" layoutX="1057.0" layoutY="417.0" startX="-100.0" stroke="#5451ed" />
+            <Line endX="-326.0" layoutX="633.0" layoutY="683.0" startX="323.5" startY="0.5" stroke="#5451ed" />
+            <Line endX="-326.0" layoutX="632.0" layoutY="416.0" startX="323.5" startY="0.5" stroke="#5451ed" />
+            <Label layoutX="523.0" layoutY="342.0" prefHeight="42.0" prefWidth="291.0" text="Votre Profil " textFill="#411ecd">
+               <font>
+                  <Font size="39.0" />
+               </font>
+            </Label>
+            <Label layoutX="343.0" layoutY="430.0" prefHeight="42.0" prefWidth="195.0" text="Adresse Mail : ">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Separator layoutX="335.0" layoutY="469.0" prefWidth="373.0" />
+            <Label fx:id="mailvalue" layoutX="470.0" layoutY="441.0" prefHeight="21.0" prefWidth="269.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="345.0" layoutY="484.0" prefHeight="21.0" prefWidth="69.0" text="Nom : ">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="345.0" layoutY="523.0" prefHeight="21.0" prefWidth="373.0" text="Prenom :  ">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Separator layoutX="345.0" layoutY="514.0" prefHeight="3.0" prefWidth="364.0" />
+            <Separator layoutX="345.0" layoutY="552.0" prefHeight="3.0" prefWidth="364.0" />
+            <Label fx:id="nomvalue" layoutX="400.0" layoutY="485.0" prefHeight="21.0" prefWidth="104.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="345.0" layoutY="568.0" prefHeight="21.0" prefWidth="121.0" text="Type de compte : ">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Separator layoutX="336.0" layoutY="595.0" prefWidth="373.0" />
+            <Label fx:id="typevalue" layoutX="459.0" layoutY="568.0" prefHeight="21.0" prefWidth="248.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="344.0" layoutY="609.0" prefHeight="21.0" prefWidth="373.0" text="Tell : ">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Separator layoutX="345.0" layoutY="638.0" prefHeight="2.0" prefWidth="364.0" />
+            <Label fx:id="prenomvalue" layoutX="435.0" layoutY="519.0" prefHeight="21.0" prefWidth="104.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="telvalue" layoutX="416.0" layoutY="607.0" prefHeight="21.0" prefWidth="104.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="updateProfile" layoutX="816.0" layoutY="452.0" onAction="#updateProfile" prefHeight="29.0" prefWidth="94.0" text="Modifer" />
          </children>
       </AnchorPane>
+      <ImageView fx:id="imageChefEntreprise" fitHeight="313.0" fitWidth="259.0" layoutX="32.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

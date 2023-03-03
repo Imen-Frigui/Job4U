@@ -49,8 +49,9 @@ import org.apache.commons.io.FilenameUtils;
 import utils.CryptagePwd;
 import org.apache.commons.validator.routines.EmailValidator;
 import services.InformationsSupplementairesService;
-import utils.MailTool;
+import utils.MailAPI3;
 import javafxgestionuser.PageAcceuilController;
+import javafxgestionuser.CandiatHomeFrontController;
 
 /**
  * FXML Controller class
@@ -115,9 +116,11 @@ public class InscriptionConnexionController implements Initializable {
     private Button btn_image;
     @FXML
     private Label lbl_code;
+    private String ImagePath;
+    private String NameImage;
+ 
+    InformationsSupplementaires p = new InformationsSupplementaires();
 
-    
-     InformationsSupplementaires p = new InformationsSupplementaires();
     /**
      * Initializes the controller class.
      */
@@ -163,9 +166,8 @@ public class InscriptionConnexionController implements Initializable {
             String Email = inscription_email.getText();
             String Password = inscription_mot_de_passe.getText();
             String Role22 = "none";
-            User u2= new User(Nom, Prenom, Email, Password, Role22);
+            User u2 = new User(Nom, Prenom, Email, Password, Role22);
 
-        
             //lawajna 3al user bil email ou iraja3li user objet keemel bil les attributs ta3o el kooll
             InformationsSupplementairesService information_ss = new InformationsSupplementairesService();
             //3ayatna lel info sups services
@@ -183,9 +185,8 @@ public class InscriptionConnexionController implements Initializable {
             String nom = tfNom.getText();
             String prenom = tfPrenom.getText();
             String tell = tfTell.getText();
-            
 
-            InformationsSupplementaires IS = new InformationsSupplementaires(id, nom, prenom, tell, "C:\\Users\\user\\Documents\\NetBeansProjects\\JavaFXGestionUser\\src\\Images\\userr.jfif");
+            InformationsSupplementaires IS = new InformationsSupplementaires(id, nom, prenom, tell, "/Images/"+NameImage);
             information_ss.AjouterInformation(IS);
             //alert de confirmation eli el user jawo behi
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -235,7 +236,6 @@ public class InscriptionConnexionController implements Initializable {
         }
 
         User u = us.ChercherParMail(connexion_email.getText());
-       
 
         if (!connexion_mot_de_passe.getText().equals(u.getPassword())) {
 //hedheya systeme de suspension (suspendre fi wa9t mou3ayan) tsir wa9telli le mot de passe 8alat
@@ -269,35 +269,34 @@ public class InscriptionConnexionController implements Initializable {
                 }, new Date(), 1000);
             }
 
-           
-            
-
-        }
-          else if (u.getRole().equals("none")) {
+        } else if (u.getRole().equals("none")) {
             try {
                 //hedhi tsir wa9t el intergation
-                boolean test ;
+                boolean test;
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("PageAcceuil.fxml"));
                 Parent root = loader.load();
                 connexion_email.getScene().setRoot(root);
-              
-                 PageAcceuilController ctrl = loader.getController();
-                 
-                   ctrl.setEmail(u.getMail());
-                    User Ualpha=ctrl.JibliUser2(u.getMail());
-                  us.ModifierUser(Ualpha);
-                    System.out.println("Min 3and el login" + Ualpha);
+
+                PageAcceuilController ctrl = loader.getController();
+
+                ctrl.setEmail(u.getMail());
+                User Ualpha = ctrl.JibliUser2(u.getMail());
+                us.ModifierUser(Ualpha);
+                System.out.println("Min 3and el login" + Ualpha);
             } catch (IOException ex) {
                 Logger.getLogger(InscriptionConnexionController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-        }
-        else if (u.getRole().compareTo("Candidat") == 0) {
+        } else if (u.getRole().compareTo("Candidat") == 0) {
             try {
                 //hedhi tsir wa9t el intergation
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("CandiatHomeFront.fxml"));
                 Parent root = loader.load();
                 connexion_email.getScene().setRoot(root);
+
+                CandiatHomeFrontController ctrl = loader.getController();
+                User Ubeta = ctrl.JibliBilMailCandidat(u.getMail());
+
             } catch (IOException ex) {
                 Logger.getLogger(InscriptionConnexionController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -307,6 +306,9 @@ public class InscriptionConnexionController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("ChefEntrepriseHomeFront.fxml"));
                 Parent root = loader.load();
                 connexion_email.getScene().setRoot(root);
+
+                ChefEntrepriseHomeFrontController ctrl = loader.getController();
+                User UGamma = ctrl.JibliBilMailChefEntreprise(u.getMail());
             } catch (IOException ex) {
                 Logger.getLogger(InscriptionConnexionController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -344,9 +346,17 @@ public class InscriptionConnexionController implements Initializable {
             lbl_code.setText(message);
 
             try {
-                //    MailTool.sendMail(emailresetvalue.getText(), subject, message);////////////ouhe
-                lbl_code.setText(message);
-                lbl_code.setText(message);
+//temchi bes7i7 ou jawha behi
+
+                String subject = "Votre code est :  ";
+                //  to subject body
+                String messagecode = "Votre code de récupération est " + code;
+
+                MailAPI3 mailing = new MailAPI3();
+
+                mailing.sendEmail(emailresetvalue.getText(), subject, messagecode.toString());  
+             
+                lbl_code.setText(messagecode);
                 codeveirform.setDisable(false);
                 codeveirform.setOpacity(1);
                 resetpasswordform.setOpacity(0);
@@ -359,6 +369,7 @@ public class InscriptionConnexionController implements Initializable {
             } catch (Exception ex) {
                 Logger.getLogger(InscriptionConnexionController.class.getName()).log(Level.SEVERE, null, ex);
             }
+
         }
 
     }
@@ -449,7 +460,8 @@ public class InscriptionConnexionController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-/*
+
+    /*
     @FXML
     private void insert_image(ActionEvent event) {
 
@@ -476,30 +488,51 @@ public class InscriptionConnexionController implements Initializable {
 
         }
     }
-*/
+     */
     
-       @FXML
+    /*
+    
+       FileChooser fc = new FileChooser();
+        File SelectedFile = fc.showOpenDialog(null);
+        if (SelectedFile != null) {
+            ImagePath = "src/resources/"+SelectedFile.getName();
+            
+            image_link.setText(ImagePath);
+            
+            tfimage.setImage(new Image(new File(ImagePath).toURI().toString()));
+        } else {
+
+            ImagePath = "C:/Users/Firas/Desktop/profile.jpg";
+            image_link.setText("C:/Users/Firas/Desktop/profile.jpg");
+            tfimage.setImage(new Image(new File(ImagePath).toString()));
+
+        }
+    */
+
+    @FXML
     private void insert_image(ActionEvent event) throws IOException {
         FileChooser fc = new FileChooser();
         fc.setTitle("Ajouter une Image");
-        fc.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif"));
-        File f = fc.showOpenDialog(null);
-        String DBPath = "C:\\\\\\\\xampp2\\\\\\\\htdocs\\\\\\\\img\\\\\\\\"+f.getName();
-        String i = f.getName();
-        p.setLien_icon(i);
-        if (f != null){
-        BufferedImage bufferedImage = ImageIO.read(f);
-        WritableImage image = SwingFXUtils.toFXImage(bufferedImage,null);
-        ImageIO.write(bufferedImage, "png", new File(DBPath));
-        User_image.setImage(image);
-        FileInputStream fin =new FileInputStream(f);
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        byte[] buf = new byte [1024];
-        for (int readNum ;(readNum= fin.read(buf)) != -1 ;){
-            bos.write(buf,0,readNum);
-            byte[] user_image = bos.toByteArray();
-}
-        } 
+      
+        File SelectedFile = fc.showOpenDialog(null);
+       
+       
+        if (SelectedFile != null) {
+              ImagePath = "src/Images/"+SelectedFile.getName();
+              NameImage =SelectedFile.getName();
+              System.out.println("hedhi esm el image eli bich tlasa9ha maal el path ::"+SelectedFile.getName());
+              System.out.println("min aand el InscriptionConnexion"+ImagePath);
+              
+            User_image.setImage(new Image(new File(ImagePath).toURI().toString()));
+       
+        }else {
+
+            ImagePath = "C:/Users/user/Desktop/profile.jpg";
+            System.out.println(ImagePath);
+            User_image.setImage(new Image(new File(ImagePath).toString()));
+
+        }
+        
     }
 }
+

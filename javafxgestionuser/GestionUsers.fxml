@@ -73,7 +73,7 @@
                   <Image url="@../Images/donut.PNG" />
                </image>
             </ImageView>
-            <Hyperlink fx:id="btn_login" layoutX="46.0" layoutY="251.0" prefHeight="35.0" prefWidth="185.0" text="Login" textFill="WHITE">
+            <Hyperlink fx:id="btn_login" layoutX="46.0" layoutY="251.0" onAction="#Emailtest" prefHeight="35.0" prefWidth="185.0" text="Login" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
@@ -113,6 +113,7 @@
                </image>
             </ImageView>
             <Hyperlink fx:id="deconnecter" layoutX="1508.0" layoutY="49.0" onAction="#deconnecter" text="se deconnecter" textFill="WHITE" />
+            <Button fx:id="btn_pdf" layoutX="144.0" layoutY="31.0" mnemonicParsing="false" onAction="#GeneratePdf" prefHeight="32.0" prefWidth="230.0" style="-fx-background-color: Grey;" text="Télécharger PDF" textFill="WHITE" />
          </children>
       </Pane>
       <ImageView fitHeight="107.0" fitWidth="249.0" layoutX="415.0" layoutY="144.0">
@@ -120,6 +121,6 @@
             <Image url="@../Images/iconJobForYou22.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="btn_enregistrer" layoutX="468.0" layoutY="837.0" mnemonicParsing="false" onAction="#saveFile" prefHeight="48.0" prefWidth="206.0" style="-fx-background-color: #6EFF5E;" text="Enregistrer Fichier" />
+      <Button fx:id="btn_enregistrer" layoutX="457.0" layoutY="914.0" mnemonicParsing="false" onAction="#saveFile" prefHeight="48.0" prefWidth="206.0" style="-fx-background-color: #6EFF5E;" text="Enregistrer Fichier" />
    </children>
 </AnchorPane>

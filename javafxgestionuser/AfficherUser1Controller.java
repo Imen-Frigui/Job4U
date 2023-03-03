@@ -151,7 +151,7 @@ public class AfficherUser1Controller {
 }
     
 
-    void MyFunction(String nom, String prenom, String Tell, String mail, String password, String role , String image ) {
+    void MyFunction(String nom, String prenom, String Tell, String mail, String password, String role , String lien_icon ) {
 
         mailvalue.setText(mail);
         motdepassevalue.setText(password);
@@ -162,9 +162,12 @@ public class AfficherUser1Controller {
         prenomvalue.setText(prenom);
 
         telvalue.setText(Tell);
-        
-        profilimage.setImage(new Image(image));
-      // profilimage.setImage(new Image(getClass().getResourceAsStream(image)));
+        System.out.println("min aand afficher1Users"+lien_icon);
+        System.out.println(lien_icon);
+        System.out.println(lien_icon);
+        //profilimage.setImage(new Image(getClass().getResourceAsStream(lien_icon)));
+     //    profilimage.setImage(new Image(String.valueOf(new File(lien_icon))));
+       profilimage.setImage(new Image(lien_icon));
 
     }
 /*

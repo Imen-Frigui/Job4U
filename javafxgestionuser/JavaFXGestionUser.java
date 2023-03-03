@@ -38,7 +38,7 @@ public class JavaFXGestionUser extends Application {
     
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("InscriptionConnexion.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("GestionUsers.fxml"));
         
         Scene scene = new Scene(root);
         primaryStage.setTitle("JobForYou");
