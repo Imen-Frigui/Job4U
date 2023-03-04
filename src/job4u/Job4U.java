@@ -28,7 +28,7 @@ public class Job4U {
       //S.supprimer(P);
        System.out.println(S.afficher());
        /*S.supprimer(P)*/
-      Societe S1= new Societe("2023","152@h4","hjkfj");
+      Societe S1= new Societe("2023","152@h4","hjkfj","rrrr","tttt");
       ServiceSociete Sos=new ServiceSociete ();
       //Sos.ajouter(S1);
       //Sos.modifier(S1);

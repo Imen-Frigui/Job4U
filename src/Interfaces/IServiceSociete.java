@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public interface IServiceSociete {
     public void ajouter(Societe s);
-     public void modifier(Societe s );
-     public void supprimer(Societe s);
+     public void modifier(String nom );
+     public void supprimer(String nom);
      public ArrayList<Societe> afficher();
 }

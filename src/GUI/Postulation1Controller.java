@@ -145,7 +145,7 @@ public class Postulation1Controller implements Initializable {
        public void handle(ActionEvent event) {
            try {
                
-               String url = "jdbc:mysql://localhost:3306/pidev";
+               String url = "jdbc:mysql://localhost:3306/new";
                String username = "root";
                String password = "";
                String selectQuery = "SELECT Simple_user FROM `postulation` WHERE id_pos = ?";

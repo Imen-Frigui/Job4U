@@ -3,52 +3,51 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="836.0" prefWidth="921.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Postulation1Controller">
+<AnchorPane id="AnchorPane" prefHeight="838.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Postulation1Controller">
    <children>
-      <AnchorPane layoutY="-13.0" prefHeight="836.0" prefWidth="386.0" style="-fx-background-color: #81D0B7;">
+      <AnchorPane layoutY="-15.0" prefHeight="851.0" prefWidth="473.0" style="-fx-background-color: #AADCE5;">
          <children>
-            <Label layoutX="147.0" layoutY="43.0" text="Formulaire" />
-           <Label layoutX="58.0" layoutY="315.0" text="ID" />
-            <Label layoutX="51.0" layoutY="351.0" text="Date" />
-            <Label layoutX="65.0" layoutY="425.0" text="Email" />
-            <Label layoutX="31.0" layoutY="390.0" text="SimpleUser" />
-            <TextField fx:id="tfid_pos" layoutX="135.0" layoutY="312.0" />
-            <TextField fx:id="tfDate" layoutX="135.0" layoutY="348.0" />
-            <TextField fx:id="tfEmail" layoutX="135.0" layoutY="409.0" />
-            <Button layoutX="53.0" layoutY="476.0" mnemonicParsing="false" onAction="#addPostulation" style="-fx-background-color: #2EB40A;" text="Ajouter" />
-            <Button layoutX="241.0" layoutY="476.0" mnemonicParsing="false" onAction="#deletePostulation" style="-fx-background-color: #F4240C;" text="Supprimer" />
-            <Button layoutX="135.0" layoutY="529.0" mnemonicParsing="false" onAction="#modifierPostulation" style="-fx-background-color: #F98109;" text="Modifier" />
-            <Button layoutX="31.0" layoutY="627.0" mnemonicParsing="false" onAction="#savepos" style="-fx-background-color: #2EB40A;" text="Accepter" />
-            <Button layoutX="149.0" layoutY="636.0" mnemonicParsing="false" style="-fx-background-color: #F4240C;" text="Refuser" />
+            <Label layoutX="139.0" layoutY="64.0" text="Formulaire">
+               <font>
+                  <Font size="28.0" />
+               </font></Label>
+           <Label layoutX="88.0" layoutY="311.0" text="ID" />
+            <Label layoutX="78.0" layoutY="351.0" text="Date" />
+            <Label layoutX="76.0" layoutY="425.0" text="Email" />
+            <Label layoutX="55.0" layoutY="390.0" text="SimpleUser" />
+            <TextField fx:id="tfid_pos" layoutX="129.0" layoutY="307.0" />
+            <TextField fx:id="tfDate" layoutX="129.0" layoutY="347.0" />
+            <TextField fx:id="tfEmail" layoutX="129.0" layoutY="421.0" />
+            <Button layoutX="53.0" layoutY="476.0" mnemonicParsing="false" onAction="#addPostulation" style="-fx-background-color: #8FF97C;" text="Ajouter" />
+            <Button layoutX="241.0" layoutY="476.0" mnemonicParsing="false" onAction="#deletePostulation" style="-fx-background-color: #DA5D3F;" text="Supprimer" />
+            <Button layoutX="135.0" layoutY="529.0" mnemonicParsing="false" onAction="#modifierPostulation" style="-fx-background-color: #FBCB6B;" text="Modifier" />
+            <Button layoutX="31.0" layoutY="627.0" mnemonicParsing="false" onAction="#savepos" style="-fx-background-color: #8FF97C;" text="Accepter" />
+            <Button layoutX="149.0" layoutY="636.0" mnemonicParsing="false" style="-fx-background-color: #DA5D3F;" text="Refuser" />
             <Button layoutX="246.0" layoutY="636.0" mnemonicParsing="false" style="-fx-background-color: #D6D30B;" text="En train de traitement" />
-            <Separator layoutX="117.0" layoutY="349.0" prefWidth="200.0" />
-            <Separator layoutX="111.0" layoutY="388.0" prefWidth="200.0" />
-            <Separator layoutX="111.0" layoutY="416.0" prefWidth="200.0" />
-            <Separator layoutX="111.0" layoutY="454.0" prefWidth="200.0" />
-            <TextField fx:id="tfSimpleUser" layoutX="114.0" layoutY="390.0" />
+            <TextField fx:id="tfSimpleUser" layoutX="129.0" layoutY="386.0" />
          </children>
          
       </AnchorPane>
-      <AnchorPane layoutX="388.0" prefHeight="836.0" prefWidth="534.0">
+      <AnchorPane layoutX="485.0" layoutY="-2.0" prefHeight="838.0" prefWidth="493.0" style="-fx-background-color: #148DA3;">
          <children>
-            <TableView fx:id="tablePos" editable="true" layoutY="3.0" prefHeight="328.0" prefWidth="534.0">
+            <Button layoutX="124.0" layoutY="463.0" mnemonicParsing="false" onAction="#afficher" style="-fx-background-color: #C5A4D6;" text="Afficher" />
+            <Button layoutX="325.0" layoutY="463.0" mnemonicParsing="false" onAction="#Refresh" style="-fx-background-color: #C5A4D6;" text="Refresh" />
+            <Button layoutX="215.0" layoutY="539.0" mnemonicParsing="false" onAction="#chercherpos" text="Chercher" />
+            <ComboBox fx:id="combouser" layoutX="124.0" layoutY="608.0" onAction="#handle" prefWidth="150.0" />
+            <TableView fx:id="tablePos" editable="true" layoutX="31.0" layoutY="83.0" prefHeight="238.0" prefWidth="394.0">
               <columns>
-                <TableColumn fx:id="idColumn" prefWidth="120.79998779296875" text="idColumn" />
-                  <TableColumn fx:id="emailColumn" prefWidth="119.19989013671875" text="dateColumn" />
-                  <TableColumn fx:id="dateColumn" prefWidth="151.2000732421875" text="userColumn" />
-                <TableColumn fx:id="userColumn" prefWidth="140.00006103515625" text="emailColumn" />
+                <TableColumn fx:id="idColumn" prefWidth="88.800048828125" text="ID" />
+                  <TableColumn fx:id="emailColumn" prefWidth="108.0" text="date" />
+                  <TableColumn fx:id="dateColumn" prefWidth="107.19989013671875" text="user" />
+                <TableColumn fx:id="userColumn" maxWidth="87.2000732421875" prefWidth="87.2000732421875" text="email" />
               </columns>
             </TableView>
-            <Button layoutX="156.0" layoutY="403.0" mnemonicParsing="false" onAction="#afficher" style="-fx-background-color: #C5A4D6;" text="Afficher" />
-            <Button layoutX="328.0" layoutY="383.0" mnemonicParsing="false" onAction="#Refresh" style="-fx-background-color: #C5A4D6;" text="Refresh" />
-            <Button layoutX="289.0" layoutY="489.0" mnemonicParsing="false" onAction="#chercherpos" text="Chercher" />
-            <ComboBox fx:id="combouser" layoutX="124.0" layoutY="608.0" onAction="#handle" prefWidth="150.0" />
          </children>
       </AnchorPane>
    </children>

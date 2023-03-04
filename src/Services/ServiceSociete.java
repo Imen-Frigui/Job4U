@@ -29,10 +29,14 @@ public class ServiceSociete implements IServiceSociete {
  @Override
     public void ajouter(Societe s) {
      try {
-         PreparedStatement pre = (PreparedStatement) connection.prepareStatement("INSERT INTO `societe`(`nom`, `adresse`, `email`) VALUES (?,?,?)");
+         PreparedStatement pre = (PreparedStatement) connection.prepareStatement("  INSERT INTO `societe`(`nom`, `adresse`, `email`, `tel`, `domaine`, `sos_image`) VALUES (?,?,?,?,?,?)  ");
          pre.setString(1, s.getNom());
-         pre.setString(2, s.getAdresse());
+         pre.setString(2, s.getAdresse());    
          pre.setString(3, s.getEmail());
+         pre.setString(4, s.getTel());
+         pre.setString(5, s.getDomaine());
+         pre.setString(6, s.getSos_image());
+         
          pre.executeUpdate();
      } catch (SQLException ex) {
          Logger.getLogger(ServiceSociete.class.getName()).log(Level.SEVERE, null, ex);
@@ -41,21 +45,25 @@ public class ServiceSociete implements IServiceSociete {
     }
 
  @Override
-    public void modifier(Societe s) {
+    public void modifier(String nom) {
      try {
          ste=(Statement) connection.createStatement();
-         String req_update=("UPDATE `societe` SET `nom`='[value-1]',`adresse`='[value-2]' WHERE 1");
+         String req_update=("UPDATE `societe` SET `adresse`=?,`email`=?,`tel`=?,`domaine`=?,`sos_image`=? WHERE `nom`=?");
          ste.executeUpdate(req_update);
      } catch (SQLException ex) {
          Logger.getLogger(ServiceSociete.class.getName()).log(Level.SEVERE, null, ex);
      }
     }
 
- @Override
-    public void supprimer(Societe s) {
+    /**
+     *
+     * @param nom
+     */
+    @Override
+    public void supprimer(String nom) {
      try {
          ste=(Statement) connection.createStatement();
-         String req_update=("DELETE FROM `societe` WHERE 0");
+         String req_update=("DELETE FROM `societe` WHERE `nom`=?");
          ste.executeUpdate(req_update);
      } catch (SQLException ex) {
          Logger.getLogger(ServiceSociete.class.getName()).log(Level.SEVERE, null, ex);
@@ -67,13 +75,15 @@ public class ServiceSociete implements IServiceSociete {
  ArrayList<Societe> listsos = new ArrayList<>();
         try{
         ste= (Statement) connection.createStatement();
-        String req_select="SELECT `nom`, `adresse`, `email` FROM `societe` WHERE 1";
+        String req_select="SELECT * FROM `societe`";
         ResultSet res = ste.executeQuery(req_select);
         while(res.next()){
             String nom = res.getString("nom");
             String adresse = res.getString(3);
-            String email = res.getString("Email");
-            Societe s = new Societe(nom,adresse,email);
+            String email = res.getString("email");
+             String tel = res.getString("tel");
+              String domaine = res.getString("domaine");
+        Societe s= new Societe(nom,adresse,email,tel,domaine);
             listsos.add(s);
         }
         }catch(SQLException ex){
@@ -81,5 +91,7 @@ public class ServiceSociete implements IServiceSociete {
         }
         return listsos;
     }
+
+   
     
 }

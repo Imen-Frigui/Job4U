@@ -32,6 +32,7 @@ public class postulerFXMain extends Application {
     public void start(Stage primaryStage) {
         try {
             Parent root= FXMLLoader.load(getClass().getResource("postuler.fxml"));
+            
             Scene scene =new Scene(root);
             
         
