@@ -4,30 +4,36 @@
  */
 package Entities;
 
-import java.util.Date;
 import java.util.logging.Logger;
-import java.time;
 
 /**
  *
  * @author user
  */
 public class Postulation {
-    private Date Date;
+    private int id_pos;
+    private String date;
     private String Simple_user;
     private String Email;
 
-    public Postulation(Date Date, String Simple_user, String Email) {
-        this.Date = Date;
+    public Postulation(int id_pos, String date, String Simple_user, String Email) {
+        this.id_pos = id_pos;
+        this.date = date;
         this.Simple_user = Simple_user;
         this.Email = Email;
     }
-    
+        public Postulation(int id_pos, String date, String Email) {
+        this.id_pos = id_pos;
+        this.date = date;
+        this.Email = Email;
+    }
 
-    public Postulation(){
-}
-    public Date getDate() {
-        return Date;
+    public int getId_pos() {
+        return id_pos;
+    }
+
+    public String getDate() {
+        return date;
     }
 
     public String getSimple_user() {
@@ -38,9 +44,12 @@ public class Postulation {
         return Email;
     }
 
-  
-    public void setDate(Date Date) {
-        this.Date = Date;
+    public void setId_pos(int id_pos) {
+        this.id_pos = id_pos;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public void setSimple_user(String Simple_user) {
@@ -53,8 +62,10 @@ public class Postulation {
 
     @Override
     public String toString() {
-        return "Postulation{" + "Date=" + Date + ", Simple_user=" + Simple_user + ", Email=" + Email + '}';
+        return "Postulation{" + "id_pos=" + id_pos + ", date=" + date + ", Simple_user=" + Simple_user + ", Email=" + Email + '}';
     }
+
+   
 
   
 }

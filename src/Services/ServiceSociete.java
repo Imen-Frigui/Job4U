@@ -70,7 +70,7 @@ public class ServiceSociete implements IServiceSociete {
         String req_select="SELECT `nom`, `adresse`, `email` FROM `societe` WHERE 1";
         ResultSet res = ste.executeQuery(req_select);
         while(res.next()){
-            String nom = res.getString("Date");
+            String nom = res.getString("nom");
             String adresse = res.getString(3);
             String email = res.getString("Email");
             Societe s = new Societe(nom,adresse,email);

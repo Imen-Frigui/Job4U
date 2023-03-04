@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PostulerController">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="606.0" style="-fx-background-color: #E6E6FA;">
+         <children>
+            <Button fx:id="btn" layoutX="228.0" layoutY="268.0" mnemonicParsing="false" onAction="#GoToForm" prefHeight="46.0" prefWidth="128.0" style="-fx-background-color: #E0B0FF;" text="Postuler" textAlignment="CENTER" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
