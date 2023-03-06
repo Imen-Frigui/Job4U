@@ -53,7 +53,8 @@
             <TextField fx:id="tfimage" layoutX="171.0" layoutY="500.0" />
             <Label layoutX="91.0" layoutY="504.0" text="sos_image" />
             <ImageView fx:id="sos_image" fitHeight="150.0" fitWidth="177.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true" />
-            <Button layoutX="39.0" layoutY="150.0" mnemonicParsing="false" onAction="#img" text="Button" />
+            <Button fx:id="btn_societe" layoutX="52.0" layoutY="180.0" mnemonicParsing="false" onAction="#insert_img" prefHeight="26.0" prefWidth="95.0" text="Insert" />
+            <ImageView fx:id="img_societe" fitHeight="150.0" fitWidth="200.0" layoutX="5.0" pickOnBounds="true" preserveRatio="true" />
          </children></AnchorPane>
    </children>
 </AnchorPane>

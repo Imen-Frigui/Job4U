@@ -4,11 +4,20 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Job4U/src/GUI/societeFXMain.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Job4U/src/Utils/PdfAPI.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Job4U/src/Services/ServiceSociete.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Job4U/src/GUI/societe.fxml</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Job4U/src/GUI/SocieteController.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Job4U/src/job4u/Job4U.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Job4U/src/ressources/postulation.txt</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Job4U/src/Entities/Societe.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Job4U/src/GUI/postulation1.fxml</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Job4U/src/Utils/MyDB.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Job4U/src/GUI/Postulation1Controller.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Job4U/src/Entities/Postulation.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Job4U/src/job4u/Job4U.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Job4U/src/Services/ServicePostulation.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Job4U/src/GUI/postulerFXMain.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Job4U/src/GUI/postulation1FXMain.java</file>
         </group>
     </open-files>
 </project-private>

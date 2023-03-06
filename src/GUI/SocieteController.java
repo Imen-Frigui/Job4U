@@ -52,12 +52,15 @@ public class SocieteController implements Initializable {
     private TextField tfdomaine;
       @FXML
     private TextField tfimage;
-     @FXML
-    private Button ajouter;
     private Button supprimer;
     private Button modifier;
   private String ImagePath;
   private String NameImage;
+   @FXML
+    private Button btn_societe;
+    @FXML
+    private ImageView imagePost;
+    @FXML
   private ImageView sos_image;
   @FXML
     private TableView<Societe> tablesos;
@@ -71,6 +74,8 @@ public class SocieteController implements Initializable {
     TableColumn<Postulation, String> telcolumn = new TableColumn<>("tel");
     @FXML
     TableColumn<Postulation, String> domainecolumn = new TableColumn<>("domaine");
+    @FXML
+    private ImageView sosimage;
 /*
      * Initializes the controller class.
      * @param url
@@ -110,8 +115,8 @@ public class SocieteController implements Initializable {
     
     FileChooser fc = new FileChooser();
         File SelectedFile = fc.showOpenDialog(null);
-        ImageView sos_image = new ImageView();
-        if (SelectedFile != null) {
+       Image sos_image = new Image(new File("src/ressources/logo(2).png").toURI().toString());
+        /*if (SelectedFile != null) {
             ImagePath = "src/resources/"+SelectedFile.getName();
             
             
@@ -123,13 +128,14 @@ public class SocieteController implements Initializable {
             
             sos_image.setImage(new Image(new File(ImagePath).toString()));
 
-        }}
+        }*/}
     
     
       
     public ObservableList<Societe> list1=FXCollections.observableArrayList();
     Connection connection;
     Statement ste;
+    @FXML
      public ObservableList<Societe> afficher(ActionEvent event){
         try {
             connection=MyDB.getInstance().getCon();
@@ -227,5 +233,33 @@ public class SocieteController implements Initializable {
     @FXML
     private void Refresh(ActionEvent event) {
         affichage();
+    }
+    
+      
+   void insert_image(ActionEvent event) {
+
+        
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Ajouter une Image");
+      
+        File SelectedFile = fc.showOpenDialog(null);
+       
+       
+        if (SelectedFile != null) {
+              ImagePath = "src/ressources/"+SelectedFile.getName();
+              NameImage =SelectedFile.getName();
+              System.out.println("hedhi esm el image eli bich tlasa9ha maal el path ::"+SelectedFile.getName());
+              System.out.println("min aand el InscriptionConnexion"+ImagePath);
+              
+            imagePost.setImage(new Image(new File(ImagePath).toURI().toString()));
+       
+        }else {
+
+            ImagePath = "C:\\Users\\user\\Documents\\NetBeansProjects\\Job4U\\src\\ressources\\logo.png";
+            System.out.println(ImagePath);
+            imagePost.setImage(new Image(new File(ImagePath).toString()));
+
+        }
+        
     }
 }

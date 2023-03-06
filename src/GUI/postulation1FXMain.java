@@ -11,6 +11,9 @@ import com.mysql.jdbc.ResultSet;
 import com.mysql.jdbc.Statement;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
@@ -74,10 +77,18 @@ public class postulation1FXMain extends Application {
      
     }
      public ObservableList<Postulation> getPostulations(){
-        ObservableList<Postulation> pos=FXCollections.observableArrayList();
-    pos.add(new Postulation (2,"Formulvgfre","Forbgaire","Formulre"));
-    pos.add(new Postulation (2,"Formulgfgfre","Forbgaire","Formulre"));
-    pos.add(new Postulation (2,"21/8/2010","Forbhhire","Fo@re"));
-    return pos;
-    }
-}
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            Date date = sdf.parse("12/03/2005");
+            ObservableList<Postulation> pos=FXCollections.observableArrayList();
+            
+            pos.add(new Postulation (2,date,"Forbgaire","Formulre"));
+            pos.add(new Postulation (2,date,"Forbgaire","Formulre"));
+            pos.add(new Postulation (2,date,"Forbhhire","Fo@re"));
+            return pos;
+        } catch (ParseException ex) {
+            Logger.getLogger(postulation1FXMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+     }}
+    

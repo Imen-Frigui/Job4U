@@ -32,11 +32,16 @@ public class ServicePostulation implements IServicePostulation {
    
     
     @Override
-    public void ajouter(Postulation p)   {
+    public void ajouter(Postulation p)
+    {java.util.Date utilDate = p.getDate();
+    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+
         try {
             PreparedStatement pre = (PreparedStatement) connection.prepareStatement("INSERT INTO `postulation`(`id_pos`, `date`, `Simple_user`, `Email`) VALUES (?,?,?,?)");
             pre.setInt(1,p.getId_pos());
-            pre.setString(2, p.getDate());
+            //pre.setDate(2, (java.sql.Date) p.getDate());
+            //pre.setDate(2, java.sql.Date.valueOf(p.getDate()));
+            pre.setDate(2, sqlDate);
             pre.setString(3, p.getSimple_user());
             pre.setString(4, p.getEmail());
             pre.executeUpdate();
@@ -88,7 +93,7 @@ public class ServicePostulation implements IServicePostulation {
          public void supprimer(Postulation p){
         try {
             ste=(Statement) connection.createStatement();
-            String req_update=("DELETE FROM `postulation` WHERE `id_pos`=10;");
+            String req_update=("DELETE FROM `postulation` WHERE `id_pos`=?;");
             ste.executeUpdate(req_update);
         } catch (SQLException ex) {
             Logger.getLogger(ServicePostulation.class.getName()).log(Level.SEVERE, null, ex);
@@ -109,14 +114,15 @@ public class ServicePostulation implements IServicePostulation {
          
     @Override
          public void Modifier(Postulation p) {
-
+            java.util.Date utilDate = p.getDate();
+            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         try {
 
             java.sql.PreparedStatement pre = connection.prepareStatement("UPDATE `postulation` SET date=?,Email=?  WHERE id = ?;");
 
-           pre.setString(1, p.getDate());
+           pre.setDate(1, sqlDate );
            pre.setString(2, p.getSimple_user());
-            pre.setString(3, p.getEmail());
+            pre.setString(3, p.getEmail());         
             pre.setInt(4, p.getId_pos());
             pre.executeUpdate();
         } catch (SQLException ex) {
@@ -131,9 +137,12 @@ public class ServicePostulation implements IServicePostulation {
             ste = (Statement) connection.createStatement();
             String req_select = "SELECT * FROM `postulation`";
             ResultSet res = ste.executeQuery(req_select);
+            Postulation p1 =new Postulation();
+            java.util.Date utilDate = p1.getDate();
+            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
             while (res.next()) {
                 int id_pos = res.getInt(1);
-                String date = res.getString(2);
+                Date date = res.getDate(2);
                 String Simple_user = res.getString(3);
                 String Email = res.getString(4);
                 Postulation p = new Postulation(id_pos,date,Simple_user,Email);
@@ -151,10 +160,11 @@ public class ServicePostulation implements IServicePostulation {
             PreparedStatement pre = (PreparedStatement) connection.prepareStatement("SELECT * FROM `postulation` where id_pos = ?");
             pre.setInt(1, id_pos);
             ResultSet result = pre.executeQuery();
+            
             while (result.next()) {
                 Postulation p = new Postulation(
                         result.getInt(1),
-                        result.getString(2),
+                        result.getDate(2),
                         result.getString(3),
                         result.getString(4));
                 return p;

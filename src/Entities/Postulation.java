@@ -4,6 +4,8 @@
  */
 package Entities;
 
+import java.util.Date;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 /**
@@ -12,27 +14,29 @@ import java.util.logging.Logger;
  */
 public class Postulation {
     private int id_pos;
-    private String date;
+    private Date date;
     private String Simple_user;
     private String Email;
 
-    public Postulation(int id_pos, String date, String Simple_user, String Email) {
+    public Postulation(int id_pos, Date date, String Simple_user, String Email) {
         this.id_pos = id_pos;
         this.date = date;
         this.Simple_user = Simple_user;
         this.Email = Email;
     }
-        public Postulation(int id_pos, String date, String Email) {
+
+    public Postulation() {
+    }
+
+    public Postulation(int id_pos) {
         this.id_pos = id_pos;
-        this.date = date;
-        this.Email = Email;
     }
 
     public int getId_pos() {
         return id_pos;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
@@ -48,7 +52,7 @@ public class Postulation {
         this.id_pos = id_pos;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -65,7 +69,39 @@ public class Postulation {
         return "Postulation{" + "id_pos=" + id_pos + ", date=" + date + ", Simple_user=" + Simple_user + ", Email=" + Email + '}';
     }
 
-   
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
 
-  
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Postulation other = (Postulation) obj;
+        if (this.id_pos != other.id_pos) {
+            return false;
+        }
+        if (!Objects.equals(this.Simple_user, other.Simple_user)) {
+            return false;
+        }
+        if (!Objects.equals(this.Email, other.Email)) {
+            return false;
+        }
+        return Objects.equals(this.date, other.date);
+    }
+
+    
+    
+    
 }
+
+    
