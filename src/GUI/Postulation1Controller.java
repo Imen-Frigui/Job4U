@@ -69,26 +69,17 @@ public class Postulation1Controller implements Initializable {
      * @param url
      * @param rb
      */
-    @FXML
     private TextField tfid_pos;
-    @FXML
     private TextField tfDate;
-    @FXML
     private TextField tfSimpleUser;
-    @FXML
     private TextField tfEmail;
     private Button accepter;
-    @FXML
     private ComboBox<String> combouser;
     @FXML
     private TableView<Postulation> tablePos;
-    @FXML
     TableColumn<Postulation, Integer> idColumn = new TableColumn<>("id_pos");
-    @FXML
     TableColumn<Postulation, String> userColumn = new TableColumn<>("Simple_User");
-    @FXML
     TableColumn<Postulation, String> emailColumn = new TableColumn<>("email");
-    @FXML
     TableColumn<Postulation, String> dateColumn = new TableColumn<>("date");
 
     public ObservableList<Postulation> list = FXCollections.observableArrayList();
@@ -102,8 +93,15 @@ public class Postulation1Controller implements Initializable {
     private Hyperlink deconnecter;
     @FXML
     private Hyperlink gestionsociete;
-
     @FXML
+    private Button btn_afficherDisc;
+    @FXML
+    private TableColumn<?, ?> Id;
+    @FXML
+    private TableColumn<?, ?> IdSender;
+    @FXML
+    private TableColumn<?, ?> IdReciver;
+
     public ObservableList<Postulation> afficher(ActionEvent event) {
         try {
             list.clear();
@@ -147,7 +145,6 @@ public class Postulation1Controller implements Initializable {
         //  String data = combouser.getSelectionModel().getSelectedItem();
     }
 
-    @FXML
     public void handle(ActionEvent event) {
         try {
 
@@ -190,7 +187,6 @@ public class Postulation1Controller implements Initializable {
 
     }
 
-    @FXML
     private void addPostulation(ActionEvent event) {
         Postulation p = new Postulation(Integer.parseInt(tfid_pos.getText()), tfDate.getText(), tfSimpleUser.getText(), tfEmail.getText());
         ServicePostulation S = new ServicePostulation();
@@ -241,7 +237,6 @@ public class Postulation1Controller implements Initializable {
 
     }
 
-    @FXML
     private void deletePostulation(ActionEvent event) {
         Postulation p = new Postulation(Integer.parseInt(tfid_pos.getText()), tfDate.getText(), tfSimpleUser.getText(), tfEmail.getText());
         ServicePostulation S = new ServicePostulation();
@@ -249,7 +244,6 @@ public class Postulation1Controller implements Initializable {
 
     }
 
-    @FXML
     private void modifierPostulation(ActionEvent event) {
         Postulation p = new Postulation(Integer.parseInt(tfid_pos.getText()), tfDate.getText(), tfEmail.getText());
         ServicePostulation S = new ServicePostulation();
@@ -288,7 +282,6 @@ public class Postulation1Controller implements Initializable {
 list.clear();
     }
 
-    @FXML
     private void Refresh(ActionEvent event) {
         affichage();
     }
@@ -301,7 +294,6 @@ private void accepter1(ActionEvent event){
 
 }
  @FXML*/
-    @FXML
     private void savepos(ActionEvent event) {
 
         ServicePostulation p = new ServicePostulation();
@@ -330,8 +322,6 @@ private void accepter1(ActionEvent event){
         }
 
     }
-
-    @FXML
 
     private void chercherpos(ActionEvent event) {
         ServicePostulation p = new ServicePostulation();
@@ -398,6 +388,10 @@ private void accepter1(ActionEvent event){
                 Logger.getLogger(InscriptionConnexionController.class.getName()).log(Level.SEVERE, null, ex);
             }
         
+    }
+
+    @FXML
+    private void AfficherDisc(ActionEvent event) {
     }
 
 }

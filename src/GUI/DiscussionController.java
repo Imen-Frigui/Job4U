@@ -22,6 +22,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import services.ServiceDiscussion;
 import services.ServiceMessages;
+import services.ServiceUser;
 import services.ServiceUsers;
 
 /**
@@ -46,7 +47,7 @@ public class DiscussionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        ServiceUsers su = new ServiceUsers();
+        ServiceUser su = new ServiceUser();
 
         List<User> users = su.afficher();
         UsersList.setAll(users);

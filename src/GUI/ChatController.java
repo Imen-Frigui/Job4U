@@ -49,10 +49,15 @@ public class ChatController implements Initializable {
     private GridPane dissGrid;
     @FXML
     private Button newChatBtn;
+    static int IdGlobale;
 
     public void setDataList(List<Message> list) {
         ServiceMessages smsg = new ServiceMessages();
         msgsList.addAll(smsg.afficher());
+    }
+    public void jibliUserByIvate (int id){
+        this.IdGlobale = id;
+        System.out.print(IdGlobale);
     }
 
     /**
@@ -60,11 +65,14 @@ public class ChatController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+                System.out.print(IdGlobale);
+
         try {
+            
             dissList.clear();
             ServiceDiscussion sdis = new ServiceDiscussion();
 
-            dissList.addAll(sdis.AfficherListe(2));
+            dissList.addAll(sdis.AfficherListe(IdGlobale));
             Collections.reverse(dissList);
 
             discs.addAll(getDiscData());

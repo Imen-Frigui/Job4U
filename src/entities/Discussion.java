@@ -13,6 +13,8 @@ public class Discussion {
     private int id_disc;
     private int id_sender;
     private int id_reciver;
+    private String Nreciver;
+    private String Nsender;
     private User sender;
     private User reciver;
     private Message message;
@@ -28,6 +30,11 @@ public class Discussion {
         this.id_disc = id_disc;
         this.sender = sender;
         this.reciver = reciver;
+    }
+        public Discussion(int id_disc, String Nsender, String Nreciver) {
+        this.id_disc = id_disc;
+        this.Nsender = Nsender;
+        this.Nreciver = Nreciver;
     }
 
     public Discussion(int id_disc, int id_sender, int id_reciver) {
@@ -117,6 +124,34 @@ public class Discussion {
      */
     public int getId_disc() {
         return id_disc;
+    }
+
+    /**
+     * @return the Nreciver
+     */
+    public String getNreciver() {
+        return Nreciver;
+    }
+
+    /**
+     * @param Nreciver the Nreciver to set
+     */
+    public void setNreciver(String Nreciver) {
+        this.Nreciver = Nreciver;
+    }
+
+    /**
+     * @return the Nsender
+     */
+    public String getNsender() {
+        return Nsender;
+    }
+
+    /**
+     * @param Nsender the Nsender to set
+     */
+    public void setNsender(String Nsender) {
+        this.Nsender = Nsender;
     }
     
 }

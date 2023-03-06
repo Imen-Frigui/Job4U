@@ -34,7 +34,7 @@ public class ServiceDiscussion implements IServiceDiscussion<Discussion> {
 
     @Override
     public void Add(Discussion d) throws SQLException {
-        PreparedStatement pre = connection.prepareStatement("INSERT INTO `job4u`.`discussion` (`id_sender`,`id_reciver`) VALUES (?,?)");
+        PreparedStatement pre = connection.prepareStatement("INSERT INTO `pidevusers`.`discussion` (`id_sender`,`id_reciver`) VALUES (?,?)");
         pre.setInt(1, d.getId_sender());
         pre.setInt(2, d.getId_reciver());
 
@@ -44,7 +44,7 @@ public class ServiceDiscussion implements IServiceDiscussion<Discussion> {
     @Override
     public void Delete(Discussion d) {
         try {
-            String requete = "DELETE FROM `job4u`.`discussion` WHERE `id_disc`=?";
+            String requete = "DELETE FROM `pidevusers`.`discussion` WHERE `id_disc`=?";
 //            String requete = "INSERT INTO evenement VALUES (null,?,?,?,CONVERT(?, DATE),CONVERT(?, DATE),CONVERT(?, TIME),CONVERT(?, TIME),?,?)";
             PreparedStatement ps = connection.prepareStatement(requete);
             ps.setInt(1, d.getId_disc());
@@ -56,27 +56,49 @@ public class ServiceDiscussion implements IServiceDiscussion<Discussion> {
     }
 
     @Override
-    public List<Discussion> afficher() {
-        List<Discussion> listDisc = new ArrayList<>();
+    public ArrayList<Discussion> afficher() {
+        ArrayList<Discussion> listDisc = new ArrayList<>();
         try {
             ste = connection.createStatement();
-            String req_select = "SELECT * FROM `job4u`.`discussion`";
+            String req_select = "SELECT * FROM `pidevusers`.`discussion`";
             ResultSet res = ste.executeQuery(req_select);
             while (res.next()) {
                 int id_disc = res.getInt(1);
                 int id_sender = res.getInt(2);
                 int id_reciver = res.getInt(3);
                 ServiceUsers su = new ServiceUsers();
-                User sender = su.getUserById(id_sender);
-                User reciver = su.getUserById(id_reciver);
-                Discussion disc = new Discussion(id_disc, sender, reciver);
+               // User sender = su.getUserById(id_sender);
+                //User reciver = su.getUserById(id_reciver);
+                Discussion disc = new Discussion(id_disc, su.getUserById(id_sender).getNom(), su.getUserById(id_reciver).getNom());
                 listDisc.add(disc);
+                System.out.println(disc);
             }
         } catch (SQLException ex) {
             System.out.println("SQLException " + ex.getMessage());
         }
 
         return listDisc;
+    }
+        public ArrayList<Discussion> afficherD() {
+        ArrayList<Discussion> listuser = new ArrayList<>();
+        try {
+            ste = connection.createStatement();
+            String req_select = "SELECT id_disc,id_sender,id_reciver FROM `pidevusers`.`discussion`";
+            ResultSet res = ste.executeQuery(req_select);
+            while (res.next()) {
+                int id = res.getInt(1);
+                int sender = res.getInt(2);
+                int reciver = res.getInt(3);
+                Discussion ur = new Discussion(id,reciver,sender);
+                listuser.add(ur);
+            }
+                            System.out.println(listuser);
+
+        } catch (SQLException ex) {
+            System.out.println("SQLException " + ex.getMessage());
+        }
+
+        return listuser;
     }
 
     public ArrayList<Message> AfficherMessageDiscussion(int id) {

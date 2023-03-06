@@ -47,6 +47,7 @@ import javafx.scene.input.MouseEvent;
 import utils.MyConnection;
 import services.InformationsSupplementairesService;
 import entities.InformationsSupplementaires;
+import gui.ChatController;
 import jakarta.mail.Authenticator;
 import java.io.File;
 import javafx.stage.Stage;
@@ -127,13 +128,13 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Hyperlink btn_login;
     @FXML
-    private Hyperlink btn_afficher_profile;
-    @FXML
     private Hyperlink deconnecter;
     @FXML
     private Button btn_enregistrer;
     @FXML
     private Button btn_pdf;
+    @FXML
+    private Hyperlink btn_gestion_discussion;
 
     //hedhom eli tra fihom hedhom declarations graphiques taaa eli mawjoud fil scene buolder
     @Override
@@ -154,7 +155,7 @@ public class FXMLDocumentController implements Initializable {
         password.setCellValueFactory(new PropertyValueFactory<>("password"));
         role.setCellValueFactory(new PropertyValueFactory<>("role"));
         //nkalmo el service wa naamlo definition des attributs fi wisqt lista mnadhma 
-        //ou akal liste hedhiki nkalmo aleha el service bich isob mil base de donnes saba wahda
+        //ou akal liste hedhiki nkalmo aileha el service bich isob mil base de donnes saba wahda
         //el lista tw t3abbet 
         //nsobo akal lista ou las9oha kama hiya fil tableView 
 
@@ -375,10 +376,6 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    @FXML
-    private void afficherProfile(ActionEvent event) {
-//hawka ena deja aamal fonction afficher el fou9 , hedhi eli aamaltha zeyda
-    }
 
     @FXML
     private void deconnecter(ActionEvent event) {
@@ -573,6 +570,20 @@ public class FXMLDocumentController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @FXML
+    private void ListDisc(ActionEvent event) {
+                
+          try {
+            //taawed thezzek lel inscription
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("GestionDiscussion.fxml"));
+            Parent root = loader.load();
+            btn_gestion_discussion.getScene().setRoot(root);
+        } catch (IOException ex) {
+            Logger.getLogger(InscriptionConnexionController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
     }
 
 }

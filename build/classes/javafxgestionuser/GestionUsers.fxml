@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="1001.0" prefWidth="1934.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxgestionuser.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="1001.0" prefWidth="1934.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxgestionuser.FXMLDocumentController">
    <children>
       <TextField fx:id="tfNom" layoutX="460.0" layoutY="361.0" prefHeight="31.0" prefWidth="199.0" />
       <TextField fx:id="tfPrenom" layoutX="460.0" layoutY="426.0" prefHeight="31.0" prefWidth="199.0" />
@@ -83,7 +83,7 @@
                   <Image url="@../Images/391-3911156_johnny-cash-clipart.png" />
                </image>
             </ImageView>
-            <Hyperlink fx:id="btn_afficher_profile" layoutX="46.0" layoutY="285.0" onAction="#afficherProfile" prefHeight="35.0" prefWidth="203.0" text="Freelancer Profiles" textFill="WHITE">
+            <Hyperlink fx:id="btn_gestion_discussion" layoutX="46.0" layoutY="285.0" onAction="#ListDisc" prefHeight="35.0" prefWidth="203.0" text="Gestion Discussion" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="javafxgestionuser.GestionDiscussionController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="14.0" layoutY="14.0" prefHeight="1001.0" prefWidth="1934.0">
+         <children>
+            <TableView fx:id="tableDiscussion" layoutX="771.0" layoutY="106.0" onMouseClicked="#clickMouse" prefHeight="559.0" prefWidth="386.0">
+               <columns>
+                  <TableColumn fx:id="idDiscussion" prefWidth="107.0" text="Id" />
+                  <TableColumn fx:id="idSender" prefWidth="123.199951171875" text="Id_Sender" />
+                  <TableColumn fx:id="idReceiver" prefWidth="156.0001220703125" text="id_receiver" />
+               </columns>
+            </TableView>
+            <Pane layoutX="-6.0" layoutY="89.0" prefHeight="912.0" prefWidth="325.0" style="-fx-background-color: #0E65F0;" styleClass="backgroundBackNav">
+               <children>
+                  <Separator layoutX="-3.0" layoutY="71.0" prefHeight="26.0" prefWidth="269.0" />
+                  <ImageView fitHeight="27.0" fitWidth="32.0" layoutX="5.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/users.png" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink fx:id="gestionuser" focusTraversable="false" layoutX="63.0" layoutY="27.0" prefHeight="26.0" prefWidth="169.0" scaleX="1.2" scaleY="1.2" text="Gestion des Utilisateurs" textFill="WHITE" />
+                  <Separator layoutY="225.0" prefHeight="26.0" prefWidth="271.0" />
+                  <ImageView fitHeight="27.0" fitWidth="32.0" layoutX="5.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/statline.png" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink fx:id="gestion_stat" layoutX="46.0" layoutY="182.0" onAction="#On_stats_users" prefHeight="29.0" prefWidth="222.0" text="Gestion des statistiques" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="State_Freelancer" layoutX="43.0" layoutY="116.0" prefHeight="34.0" prefWidth="222.0" text="Statistique des Freelancers" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <ImageView fitHeight="27.0" fitWidth="32.0" layoutX="5.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/donut.PNG" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink fx:id="btn_login" layoutX="46.0" layoutY="251.0" onAction="#Emailtest" prefHeight="35.0" prefWidth="185.0" text="Login" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <ImageView fitHeight="20.0" fitWidth="35.0" layoutX="6.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/391-3911156_johnny-cash-clipart.png" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink fx:id="btn_gestion_discussion" layoutX="46.0" layoutY="285.0" onAction="#ListDisc" prefHeight="35.0" prefWidth="203.0" text="Gestion Discussion" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <ImageView fitHeight="20.0" fitWidth="35.0" layoutX="6.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/391-3911156_johnny-cash-clipart.png" />
+                     </image>
+                  </ImageView>
+                  <Separator layoutY="320.0" prefHeight="26.0" prefWidth="271.0" />
+               </children>
+            </Pane>
+            <Pane layoutX="-6.0" prefHeight="89.0" prefWidth="325.0" style="-fx-background-color: black;" styleClass="backgroundAdmin">
+               <children>
+                  <Hyperlink focusTraversable="false" layoutX="95.0" layoutY="27.0" prefHeight="35.0" prefWidth="110.0" scaleX="1.2" scaleY="1.2" text="AdminPanel" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+            </Pane>
+            <Pane layoutX="319.0" prefHeight="89.0" prefWidth="1645.0" style="-fx-background-color: #0E65F0;" styleClass="backgroundBackNav">
+               <children>
+                  <ImageView fitHeight="48.0" fitWidth="50.0" layoutX="1539.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/user.png" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink fx:id="deconnecter" layoutX="1508.0" layoutY="49.0" onAction="#deconnecter" text="se deconnecter" textFill="WHITE" />
+                  <Button fx:id="btn_pdf" layoutX="144.0" layoutY="31.0" mnemonicParsing="false" onAction="#GeneratePdf" prefHeight="32.0" prefWidth="230.0" style="-fx-background-color: Grey;" text="Télécharger PDF" textFill="WHITE" />
+               </children>
+            </Pane>
+            <ImageView fitHeight="107.0" fitWidth="249.0" layoutX="415.0" layoutY="144.0">
+               <image>
+                  <Image url="@../Images/iconJobForYou22.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="btn_afficher_discussion" layoutX="429.0" layoutY="442.0" mnemonicParsing="false" onAction="#afficherDisc" prefHeight="48.0" prefWidth="230.0" text="Button" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

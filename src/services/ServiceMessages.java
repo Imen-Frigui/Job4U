@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -33,7 +32,7 @@ public class ServiceMessages implements IServiceMessages<Message> {
     @Override
     public void Add(Message m) throws SQLException {
         try {
-            PreparedStatement pre = connection.prepareStatement("INSERT INTO `job4u`.`message` (`id_disc`,`id_sender`,`message`) VALUES (?,?,?)");
+            PreparedStatement pre = connection.prepareStatement("INSERT INTO `pidevusers`.`message` (`id_disc`,`id_sender`,`message`) VALUES (?,?,?)");
             pre.setInt(1, m.getId_disc());
             pre.setInt(2, m.getId_sender());
             
@@ -130,19 +129,3 @@ public class ServiceMessages implements IServiceMessages<Message> {
     }
 
 }
-||||||| empty tree
-=======
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package services;
-
-/**
- *
- * @author GO BRO
- */
-public class ServiceMessages {
-    
-}
->>>>>>> db76b1cfab8c254c1337a5b8d57bcc2461641d3a
