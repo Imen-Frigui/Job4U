@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="440.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="tableView.UpdateController">
+    <stylesheets>
+        <URL value="@update.css" />
+    </stylesheets>
+   <children>
+      <HBox layoutX="14.0" prefHeight="58.0" prefWidth="415.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Update" wrappingWidth="210.13671875">
+               <font>
+                  <Font name="Arial Black" size="39.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <HBox layoutX="13.0" layoutY="78.0" prefHeight="43.0" prefWidth="415.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Update" wrappingWidth="119.13671875">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <TextField prefHeight="34.0" prefWidth="303.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="14.0" layoutY="141.0" prefHeight="50.0" prefWidth="415.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" wrappingWidth="116.13671875">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <TextField prefHeight="33.0" prefWidth="302.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="14.0" layoutY="215.0" prefHeight="50.0" prefWidth="415.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="118.13671875">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <TextField prefHeight="33.0" prefWidth="302.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="13.0" layoutY="272.0" prefHeight="50.0" prefWidth="415.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Duree" wrappingWidth="118.13671875">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <TextField prefHeight="33.0" prefWidth="302.0" />
+         </children>
+      </HBox>
+      <Button layoutX="193.0" layoutY="379.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="75.0" text="Update" />
+   </children>
+</AnchorPane>

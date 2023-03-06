@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxgestionuser.CandiatHomeFrontController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="1024.0" prefWidth="1873.0">
+         <styleClass>
+            <String fx:value="mainFxmlClass" />
+            <String fx:value="backgroundFront" />
+         </styleClass>
+         <children>
+            <Pane prefHeight="95.0" prefWidth="1925.0" style="-fx-background-color: white;">
+               <children>
+                  <Hyperlink fx:id="btn_entreprises" focusTraversable="false" layoutX="1225.0" layoutY="28.0" onAction="#viewEntreprises" prefHeight="29.0" prefWidth="101.0" text="Entreprises" textFill="#1b1a1a">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <Separator layoutX="1176.0" layoutY="2.0" orientation="VERTICAL" prefHeight="92.0" prefWidth="8.0" />
+                  <Separator layoutX="1357.0" layoutY="2.0" orientation="VERTICAL" prefHeight="92.0" prefWidth="8.0" />
+                  <Separator layoutX="969.0" layoutY="4.0" orientation="VERTICAL" prefHeight="89.0" prefWidth="8.0" />
+                  <Hyperlink fx:id="btn_jobs" focusTraversable="false" layoutX="1422.0" layoutY="26.0" onAction="#view_jobs" prefHeight="34.0" prefWidth="51.0" text="Jobs" textFill="#1b1a1a">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <ImageView fitHeight="79.0" fitWidth="232.0" layoutX="192.0" layoutY="7.0">
+                     <image>
+                        <Image url="@../Images/iconJobForYou22.jpg" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink fx:id="deconnecter" layoutX="1701.0" layoutY="26.0" onAction="#Lien_Logout" prefHeight="34.0" prefWidth="148.0" text="Logout" />
+                  <Hyperlink fx:id="btn_open_chat" focusTraversable="false" layoutX="1026.0" layoutY="28.0" onAction="#openChat" prefHeight="29.0" prefWidth="101.0" text="Open Chat" textFill="#1b1a1a">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="btn_reclamation" focusTraversable="false" layoutX="820.0" layoutY="28.0" onAction="#reclamation" prefHeight="29.0" prefWidth="101.0" text="Reclamation" textFill="#1b1a1a">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+            </Pane>
+            <ImageView fitHeight="171.0" fitWidth="1925.0" layoutY="93.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../Images/photo.PNG" />
+               </image>
+            </ImageView>
+            <Label fx:id="id_ID" layoutX="701.0" layoutY="105.0" scaleX="2.0" scaleY="2.0" text="id_user" visible="false" />
+            <AnchorPane fx:id="home" layoutX="6.0" layoutY="961.0" prefHeight="65.0" prefWidth="1925.0" style="-fx-background-color: grey;" styleClass="backgroundFooter">
+               <children>
+                  <Label layoutX="903.0" layoutY="22.0" styleClass="backgroundFooter" text="Job For You Inc@." textFill="WHITE" />
+               </children>
+            </AnchorPane>
+            <Label layoutX="329.0" layoutY="402.0" prefHeight="42.0" prefWidth="195.0" text="Adresse Mail : ">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Separator layoutX="321.0" layoutY="441.0" prefWidth="373.0" />
+            <Label fx:id="mailvalue" layoutX="456.0" layoutY="413.0" prefHeight="21.0" prefWidth="269.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="331.0" layoutY="456.0" prefHeight="21.0" prefWidth="69.0" text="Nom : ">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="331.0" layoutY="495.0" prefHeight="21.0" prefWidth="373.0" text="Prenom :  ">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Separator layoutX="331.0" layoutY="486.0" prefHeight="3.0" prefWidth="364.0" />
+            <Separator layoutX="331.0" layoutY="524.0" prefHeight="3.0" prefWidth="364.0" />
+            <Label fx:id="nomvalue" layoutX="386.0" layoutY="457.0" prefHeight="21.0" prefWidth="104.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="331.0" layoutY="540.0" prefHeight="21.0" prefWidth="121.0" text="Type de compte : ">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Separator layoutX="322.0" layoutY="567.0" prefWidth="373.0" />
+            <Label fx:id="typevalue" layoutX="445.0" layoutY="540.0" prefHeight="21.0" prefWidth="248.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="prenomvalue" layoutX="414.0" layoutY="495.0" prefHeight="21.0" prefWidth="104.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Line endX="-100.0" endY="266.0" layoutX="373.0" layoutY="387.0" startX="-100.0" startY="-3.79290771484375" stroke="#5451ed" />
+            <Line endX="-100.0" endY="266.0" layoutX="1023.0" layoutY="383.0" startX="-100.0" stroke="#5451ed" />
+            <Line endX="-326.0" layoutX="599.0" layoutY="649.0" startX="323.5" startY="0.5" stroke="#5451ed" />
+            <Line endX="-326.0" layoutX="598.0" layoutY="382.0" startX="323.5" startY="0.5" stroke="#5451ed" />
+            <Label layoutX="330.0" layoutY="581.0" prefHeight="21.0" prefWidth="373.0" text="Tell : ">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Separator layoutX="331.0" layoutY="610.0" prefHeight="2.0" prefWidth="364.0" />
+            <Label fx:id="telvalue" layoutX="383.0" layoutY="577.0" prefHeight="21.0" prefWidth="104.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="481.0" layoutY="311.0" prefHeight="42.0" prefWidth="291.0" text="Votre Profil " textFill="#411ecd">
+               <font>
+                  <Font size="39.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imageFreelencer" fitHeight="313.0" fitWidth="232.0" layoutX="22.0" layoutY="336.0" pickOnBounds="true" preserveRatio="true" />
+            <Hyperlink fx:id="updateProfile" layoutX="782.0" layoutY="420.0" onAction="#updateProfile" prefHeight="29.0" prefWidth="94.0" text="Modifer" />
+            <AnchorPane fx:id="MofierFormulaire" disable="true" layoutX="969.0" layoutY="345.0" prefHeight="432.0" prefWidth="717.0">
+               <children>
+                  <Button fx:id="btn_mofier_Profile" layoutX="12.0" layoutY="289.0" mnemonicParsing="false" onAction="#ModifierProfile" prefHeight="31.0" prefWidth="327.0" style="-fx-background-color: #5A27FF;" text="Confirmer" textFill="#fffefe" />
+                  <Label layoutX="14.0" layoutY="37.0" text="Modifier Votre Profile" />
+                  <TextField fx:id="mailvalue1" layoutX="14.0" layoutY="168.0" prefHeight="31.0" prefWidth="327.0" promptText="Email" />
+                  <TextField fx:id="telvalue1" layoutX="14.0" layoutY="223.0" prefHeight="31.0" prefWidth="327.0" promptText="Telephone" />
+                  <TextField fx:id="nomvalue1" layoutX="12.0" layoutY="66.0" prefHeight="31.0" prefWidth="327.0" promptText="Nom" />
+                  <TextField fx:id="prenomvalue1" layoutX="12.0" layoutY="117.0" prefHeight="31.0" prefWidth="327.0" promptText="Prenom" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

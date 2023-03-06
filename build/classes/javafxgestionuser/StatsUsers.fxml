@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="934.0" prefWidth="1025.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="javafxgestionuser.StatsUsersController">
+   <children>
+      <Text layoutX="207.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistiques des utilisateurs inscrits dans notre application" wrappingWidth="593.8359375">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      <PieChart fx:id="statsUsers" layoutX="46.0" layoutY="104.0" prefHeight="688.0" prefWidth="921.0" />
+      <Button fx:id="btn_dashboard" layoutX="384.0" layoutY="831.0" mnemonicParsing="false" onAction="#backDashboard" prefHeight="63.0" prefWidth="202.0" text="Back " />
+   </children>
+</AnchorPane>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="profildata" prefHeight="487.0" prefWidth="758.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxgestionuser.AfficherUser1Controller">
+   <children>
+      <ImageView fx:id="profilimage" fitHeight="150.0" fitWidth="200.0" layoutX="25.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="260.0" layoutY="29.0" prefHeight="21.0" prefWidth="104.0" text="Adresse Mail : ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="260.0" layoutY="68.0" prefHeight="21.0" prefWidth="104.0" text="Mot de passe :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="259.0" layoutY="102.0" prefHeight="21.0" prefWidth="121.0" text="Type de compte : ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Line endX="100.0" layoutX="323.0" layoutY="188.0" startX="-100.0" stroke="#5451ed" />
+      <Separator layoutX="260.0" layoutY="59.0" prefWidth="373.0" />
+      <Separator layoutX="260.0" layoutY="97.0" prefWidth="373.0" />
+      <Separator layoutX="260.0" layoutY="131.0" prefWidth="373.0" />
+      <Label layoutX="39.0" layoutY="254.0" prefHeight="21.0" prefWidth="69.0" text="Nom : ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="39.0" layoutY="293.0" prefHeight="21.0" prefWidth="373.0" text="Prenom :  ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="327.0" prefHeight="21.0" prefWidth="373.0" text="Tell : ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Separator layoutX="39.0" layoutY="284.0" prefWidth="550.0" />
+      <Separator layoutX="39.0" layoutY="322.0" prefWidth="550.0" />
+      <Separator layoutX="39.0" layoutY="356.0" prefWidth="550.0" />
+      <Label fx:id="mailvalue" layoutX="361.0" layoutY="29.0" prefHeight="21.0" prefWidth="269.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="motdepassevalue" layoutX="369.0" layoutY="68.0" prefHeight="21.0" prefWidth="259.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="typevalue" layoutX="383.0" layoutY="104.0" prefHeight="21.0" prefWidth="248.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="nomvalue" layoutX="94.0" layoutY="255.0" prefHeight="21.0" prefWidth="104.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="prenomvalue" layoutX="110.0" layoutY="295.0" prefHeight="21.0" prefWidth="104.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="telvalue" layoutX="81.0" layoutY="327.0" prefHeight="21.0" prefWidth="104.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Hyperlink fx:id="hyperlink_modifier" layoutX="600.0" layoutY="188.0" onAction="#modifierlink" text="modifier" />
+   </children>
+</AnchorPane>

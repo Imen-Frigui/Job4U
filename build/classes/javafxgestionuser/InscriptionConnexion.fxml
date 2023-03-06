@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxgestionuser.InscriptionConnexionController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="-21.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="980.0" prefWidth="1238.0" style="-fx-background-color: white;">
+         <children>
+            <AnchorPane layoutX="63.0" layoutY="132.0" prefHeight="494.0" prefWidth="544.0">
+               <children>
+                  <Label layoutX="154.0" layoutY="14.0" text="Inscription">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="113.0" layoutY="226.0" text="E-mail " />
+                  <Label layoutX="89.0" layoutY="288.0" text="Mot de passe " />
+                  <Label layoutX="64.0" layoutY="347.0" text="Repeter mot de passe" />
+                  <TextField fx:id="inscription_email" layoutX="249.0" layoutY="221.0" />
+                  <PasswordField fx:id="inscription_mot_de_passe" layoutX="249.0" layoutY="283.0" />
+                  <PasswordField fx:id="inscription_repeter_mot_de_passe" layoutX="249.0" layoutY="342.0" />
+                  <Button fx:id="btn_inscrire" layoutX="208.0" layoutY="422.0" mnemonicParsing="false" onAction="#inscription" style="-fx-alignment: center; -fx-background-color: #5A27FF;" text="S'inscrire" textFill="WHITE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="tfTell" layoutX="249.0" layoutY="161.0" />
+                  <TextField fx:id="tfPrenom" layoutX="249.0" layoutY="110.0" />
+                  <TextField fx:id="tfNom" layoutX="249.0" layoutY="64.0" />
+                  <Label layoutX="120.0" layoutY="64.0" prefHeight="21.0" prefWidth="53.0" text="Nom" />
+                  <Label layoutX="120.0" layoutY="115.0" prefHeight="21.0" prefWidth="53.0" text="Prenom" />
+                  <Label layoutX="119.0" layoutY="166.0" prefHeight="21.0" prefWidth="53.0" text="Tell" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="cnxform" layoutX="1409.0" layoutY="171.0" prefHeight="319.0" prefWidth="526.0">
+               <children>
+                  <Label layoutX="92.0" layoutY="80.0" text="E-mail " />
+                  <Label layoutX="76.0" layoutY="120.0" text="Mot de passe " />
+                  <TextField fx:id="connexion_email" layoutX="226.0" layoutY="75.0" prefHeight="31.0" prefWidth="271.0" />
+                  <PasswordField fx:id="connexion_mot_de_passe" layoutX="226.0" layoutY="115.0" prefHeight="31.0" prefWidth="271.0" />
+                  <Button fx:id="cnxbutton" layoutX="226.0" layoutY="160.0" mnemonicParsing="false" onAction="#connecter" prefHeight="29.0" prefWidth="187.0" style="-fx-alignment: center; -fx-background-color: #5A27FF;" text="Se connceter" textFill="WHITE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="155.0" layoutY="14.0" text="Connexion">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="passwordfalsemessage" fill="#ff0404" layoutX="53.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                  <Hyperlink fx:id="resetpassword" layoutX="218.0" layoutY="235.0" onAction="#resetpassword" prefHeight="29.0" prefWidth="187.0" text="Mot de passe oublié" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="resetpasswordform" disable="true" layoutX="459.0" layoutY="652.0" prefHeight="200.0" prefWidth="351.0">
+               <children>
+                  <Button fx:id="btn_crea_co" layoutX="12.0" layoutY="144.0" mnemonicParsing="false" onAction="#RécuprationPwdUser" prefHeight="31.0" prefWidth="327.0" style="-fx-background-color: #5A27FF;" text="Confirmer" textFill="WHITE" />
+                  <TextField fx:id="emailresetvalue" layoutX="12.0" layoutY="69.0" opacity="0.04" prefHeight="31.0" prefWidth="327.0" promptText="Votre mail" />
+                  <Label layoutX="14.0" layoutY="37.0" text="Saisir votre adresse mail" />
+                  <Label layoutX="12.0" layoutY="111.0" prefHeight="21.0" prefWidth="327.0" text="Un mail contenant un code vous sera envoyé. " />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="doublepasswordform" disable="true" layoutX="903.0" layoutY="636.0" prefHeight="200.0" prefWidth="351.0">
+               <children>
+                  <Button fx:id="btn_crea_co1" layoutX="12.0" layoutY="155.0" mnemonicParsing="false" onAction="#updatemotdepasse" prefHeight="31.0" prefWidth="327.0" style="-fx-background-color: #5A27FF;" text="Confirmer" textFill="WHITE" />
+                  <PasswordField fx:id="resetpasswordvalue1" accessibleRole="PASSWORD_FIELD" layoutX="12.0" layoutY="46.0" prefHeight="31.0" prefWidth="327.0" promptText="votre mot de passe" />
+                  <Label layoutX="14.0" layoutY="14.0" text="Saisir un nouveau mot de passe " />
+                  <PasswordField fx:id="resetpasswordvalue2" accessibleRole="PASSWORD_FIELD" layoutX="12.0" layoutY="100.0" prefHeight="31.0" prefWidth="327.0" promptText="Repeter mot de passe" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="codeveirform" disable="true" layoutX="34.0" layoutY="652.0" prefHeight="200.0" prefWidth="351.0">
+               <children>
+                  <Button fx:id="btn_crea_co2" layoutX="12.0" layoutY="144.0" mnemonicParsing="false" onAction="#verifcode" prefHeight="31.0" prefWidth="327.0" style="-fx-background-color: #5A27FF;" text="Confirmer" />
+                  <TextField fx:id="codealpha" layoutX="12.0" layoutY="69.0" prefHeight="31.0" prefWidth="327.0" promptText="code alphanumérique de longeur 6" />
+                  <Label layoutX="14.0" layoutY="37.0" text="Saisir le code" />
+               </children>
+            </AnchorPane>
+            <Pane layoutX="14.0" layoutY="-6.0" prefHeight="138.0" prefWidth="2005.0" style="-fx-background-color: #0E65F0;" styleClass="backgroundBackNav">
+               <children>
+                  <ImageView fitHeight="74.0" fitWidth="94.0" layoutX="1786.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/user.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="97.0" fitWidth="234.0" layoutX="62.0" layoutY="21.0">
+                     <image>
+                        <Image url="@../Images/iconJobForYou22.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <ImageView fx:id="User_image" fitHeight="319.0" fitWidth="639.0" layoutX="579.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="btn_image" layoutX="734.0" layoutY="509.0" mnemonicParsing="false" onAction="#insert_image" prefHeight="44.0" prefWidth="242.0" style="-fx-alignment: center; -fx-background-color: #5A27FF;" text="Insérer Image" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Label layoutX="1532.0" layoutY="498.0" prefHeight="21.0" prefWidth="94.0" text="Le code est  :" textFill="#1ab23b" />
+            <Label fx:id="lbl_code" layoutX="1639.0" layoutY="498.0" text="code" textFill="#12a423" />
+            <Line endX="-100.0" endY="726.0" layoutX="1453.0" layoutY="254.0" startX="-107.0" startY="-122.0" stroke="#5451ed" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

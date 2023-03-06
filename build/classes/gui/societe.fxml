@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="977.0" prefWidth="1551.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.SocieteController">
+   <children>
+      <AnchorPane layoutX="919.0" layoutY="104.0" prefHeight="931.0" prefWidth="1029.0" style="-fx-background-color: white;">
+         <children>
+            <Button layoutX="464.0" layoutY="738.0" mnemonicParsing="false" onAction="#img" text="Button" />
+            <TableView fx:id="tablesos" layoutX="17.0" prefHeight="682.0" prefWidth="1012.0">
+              <columns>
+                <TableColumn fx:id="nomcolumn" prefWidth="113.0" text="Nom" />
+                <TableColumn fx:id="adressecolumn" prefWidth="204.0" text="Adresse" />
+                  <TableColumn fx:id="emailcolumn" prefWidth="251.0" text="Email" />
+                  <TableColumn fx:id="telcolumn" prefWidth="215.0" text="Tel" />
+                  <TableColumn fx:id="domainecolumn" prefWidth="231.0" text="Domaine" />
+              </columns>
+            </TableView>
+            <Button layoutX="190.0" layoutY="738.0" mnemonicParsing="false" onAction="#afficher" text="afficher" />
+            <Button layoutX="866.0" layoutY="753.0" mnemonicParsing="false" onAction="#Refresh" text="refresh" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="318.0" layoutY="103.0" prefHeight="953.0" prefWidth="613.0" style="-fx-background-color: white;">
+         <children>
+            <TextField fx:id="tfnom" layoutX="168.0" layoutY="223.0" prefHeight="31.0" prefWidth="318.0" />
+            <TextField fx:id="tfadresse" layoutX="168.0" layoutY="292.0" prefHeight="31.0" prefWidth="318.0" />
+            <TextField fx:id="tfemail" layoutX="169.0" layoutY="356.0" prefHeight="31.0" prefWidth="318.0" />
+            <TextField fx:id="tftel" layoutX="169.0" layoutY="416.0" prefHeight="31.0" prefWidth="318.0" />
+            <TextField fx:id="tfdomaine" layoutX="170.0" layoutY="483.0" prefHeight="31.0" prefWidth="318.0" />
+            <Label layoutX="210.0" layoutY="75.0" prefHeight="49.0" prefWidth="205.0" text="Liste des sociétes">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="88.0" layoutY="228.0" text="Nom" />
+            <Label layoutX="83.0" layoutY="297.0" text="Adresse" />
+            <Label layoutX="91.0" layoutY="360.0" text="Email" />
+            <Label layoutX="78.0" layoutY="421.0" text="télèphone" />
+            <Label layoutX="82.0" layoutY="483.0" text="Domaine" />
+            <Button layoutX="25.0" layoutY="654.0" mnemonicParsing="false" onAction="#addsociete" prefHeight="48.0" prefWidth="132.0" text="Ajouter" />
+            <Button layoutX="210.0" layoutY="654.0" mnemonicParsing="false" onAction="#deleteSociete" prefHeight="49.0" prefWidth="132.0" text="Supprimer" />
+            <Button layoutX="416.0" layoutY="654.0" mnemonicParsing="false" onAction="#modifierSociete" prefHeight="49.0" prefWidth="143.0" text="Modifier" />
+            <ImageView fx:id="sosimage" fitHeight="157.0" fitWidth="150.0" layoutX="9.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
+            <TextField fx:id="tfimage" layoutX="170.0" layoutY="550.0" prefHeight="31.0" prefWidth="318.0" />
+            <Label layoutX="87.0" layoutY="555.0" text="sos_image" />
+            <ImageView fx:id="sos_image" fitHeight="150.0" fitWidth="177.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true" />
+            <Button layoutX="39.0" layoutY="150.0" mnemonicParsing="false" onAction="#img" text="Insert Image" />
+         </children></AnchorPane>
+      <Pane layoutX="-9.0" layoutY="103.0" prefHeight="953.0" prefWidth="325.0" style="-fx-background-color: #495AEB;" styleClass="backgroundBackNav">
+         <children>
+            <Separator layoutX="1.0" layoutY="69.0" prefHeight="26.0" prefWidth="269.0" />
+            <ImageView fitHeight="27.0" fitWidth="32.0" layoutX="5.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/users.png" />
+               </image>
+            </ImageView>
+            <Hyperlink fx:id="gestionuser" focusTraversable="false" layoutX="63.0" layoutY="27.0" prefHeight="29.0" prefWidth="203.0" scaleX="1.2" scaleY="1.2" text="Gestion des Postulations" textFill="WHITE" />
+            <Separator layoutY="129.0" prefHeight="26.0" prefWidth="271.0" />
+            <ImageView fitHeight="27.0" fitWidth="32.0" layoutX="5.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/statline.png" />
+               </image>
+            </ImageView>
+            <Hyperlink fx:id="State_Freelancer" layoutX="43.0" layoutY="95.0" prefHeight="34.0" prefWidth="222.0" text="Statistique des Postulations" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Hyperlink>
+            <ImageView fitHeight="20.0" fitWidth="35.0" layoutX="6.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/391-3911156_johnny-cash-clipart.png" />
+               </image>
+            </ImageView>
+            <Separator layoutY="190.0" prefHeight="26.0" prefWidth="271.0" />
+            <Hyperlink fx:id="gestionsociete" focusTraversable="false" layoutX="52.0" layoutY="155.0" onAction="#GoToGestionSciete" prefHeight="35.0" prefWidth="222.0" text="Gestion des Societés" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="-9.0" prefHeight="103.0" prefWidth="325.0" style="-fx-background-color: black;" styleClass="backgroundAdmin">
+         <children>
+            <Hyperlink focusTraversable="false" layoutX="132.0" layoutY="34.0" prefHeight="35.0" prefWidth="110.0" scaleX="1.2" scaleY="1.2" text="Admin " textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Hyperlink>
+         </children>
+      </Pane>
+      <Pane layoutX="316.0" prefHeight="103.0" prefWidth="1645.0" style="-fx-background-color: #495AEB;" styleClass="backgroundBackNav">
+         <children>
+            <ImageView fitHeight="48.0" fitWidth="50.0" layoutX="1539.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/user.png" />
+               </image>
+            </ImageView>
+            <Hyperlink fx:id="deconnecter" layoutX="1508.0" layoutY="49.0" onAction="#deconnecter" text="se deconnecter" textFill="WHITE" />
+            <ImageView fitHeight="62.0" fitWidth="222.0" layoutX="61.0" layoutY="12.0">
+               <image>
+                  <Image url="@../Images/iconJobForYou22.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

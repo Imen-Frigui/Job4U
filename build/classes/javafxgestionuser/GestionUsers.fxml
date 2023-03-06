@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="1001.0" prefWidth="1934.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxgestionuser.FXMLDocumentController">
+   <children>
+      <TextField fx:id="tfNom" layoutX="460.0" layoutY="361.0" prefHeight="31.0" prefWidth="199.0" />
+      <TextField fx:id="tfPrenom" layoutX="460.0" layoutY="426.0" prefHeight="31.0" prefWidth="199.0" />
+      <TextField fx:id="tfEmail" layoutX="460.0" layoutY="491.0" prefHeight="31.0" prefWidth="199.0" />
+      <TextField fx:id="tfPwd" layoutX="460.0" layoutY="554.0" prefHeight="31.0" prefWidth="199.0" />
+      <ComboBox fx:id="comboRole" layoutX="456.0" layoutY="632.0" prefHeight="19.0" prefWidth="206.0" />
+      <Label layoutX="378.0" layoutY="361.0" prefHeight="21.0" prefWidth="58.0" text="Nom" />
+      <Label layoutX="379.0" layoutY="431.0" prefHeight="21.0" prefWidth="58.0" text="Prenom" />
+      <Label layoutX="379.0" layoutY="496.0" prefHeight="21.0" prefWidth="58.0" text="Email" />
+      <Label layoutX="341.0" layoutY="559.0" prefHeight="21.0" prefWidth="103.0" text="Mot de passe" />
+      <Label layoutX="386.0" layoutY="637.0" prefHeight="21.0" prefWidth="58.0" text="Role" />
+      <Button fx:id="btn_ajouter" layoutX="833.0" layoutY="789.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="48.0" prefWidth="111.0" style="-fx-background-color: #6EFF5E;" text="Ajouter" />
+      <Button fx:id="btn_modifier" layoutX="1004.0" layoutY="789.0" mnemonicParsing="false" onAction="#modifier" prefHeight="48.0" prefWidth="111.0" style="-fx-background-color: #E8BF4A;" text="Modifier" />
+      <Button fx:id="btn_afficher" layoutX="1173.0" layoutY="789.0" mnemonicParsing="false" onAction="#afficher" prefHeight="48.0" prefWidth="284.0" style="-fx-background-color: #4AAFE8;" text="Afficher" />
+      <Button fx:id="btn_supprimer" layoutX="1542.0" layoutY="789.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="48.0" prefWidth="111.0" style="-fx-background-color: #FF281C;" text="Supprimer" />
+      <TableView fx:id="tableUsers" layoutX="771.0" layoutY="106.0" onMouseClicked="#clickMouse" prefHeight="640.0" prefWidth="1157.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="107.0" text="Id" />
+          <TableColumn fx:id="nom" prefWidth="82.0" text="Nom" />
+            <TableColumn fx:id="prenom" prefWidth="131.0" text="Prenom" />
+            <TableColumn fx:id="email" prefWidth="376.0" text="Email" />
+            <TableColumn fx:id="password" prefWidth="299.0" text="Mot de passe" />
+            <TableColumn fx:id="role" prefWidth="197.0" text="Role" />
+        </columns>
+      </TableView>
+      <Button fx:id="btn_refresh" layoutX="1750.0" layoutY="789.0" mnemonicParsing="false" onAction="#refresh" prefHeight="48.0" prefWidth="157.0" style="-fx-background-color: #FF7A30;" text="Refresh" />
+      <TextField fx:id="tfChercher" layoutX="408.0" layoutY="746.0" onKeyPressed="#chercher" prefHeight="31.0" prefWidth="302.0" promptText="Chercher" />
+      <Label layoutX="501.0" layoutY="702.0" prefHeight="21.0" prefWidth="103.0" text="Chercher User" />
+      <Pane layoutX="-6.0" layoutY="89.0" prefHeight="912.0" prefWidth="325.0" style="-fx-background-color: #0E65F0;" styleClass="backgroundBackNav">
+         <children>
+            <Separator layoutX="-3.0" layoutY="71.0" prefHeight="26.0" prefWidth="269.0" />
+            <ImageView fitHeight="27.0" fitWidth="32.0" layoutX="5.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/users.png" />
+               </image>
+            </ImageView>
+            <Hyperlink fx:id="gestionuser" focusTraversable="false" layoutX="63.0" layoutY="27.0" prefHeight="26.0" prefWidth="169.0" scaleX="1.2" scaleY="1.2" text="Gestion des Utilisateurs" textFill="WHITE" />
+            <Separator layoutY="225.0" prefHeight="26.0" prefWidth="271.0" />
+            <ImageView fitHeight="27.0" fitWidth="32.0" layoutX="5.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/statline.png" />
+               </image>
+            </ImageView>
+            <Hyperlink fx:id="gestion_stat" layoutX="46.0" layoutY="182.0" onAction="#On_stats_users" prefHeight="29.0" prefWidth="222.0" text="Gestion des statistiques" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink fx:id="State_Freelancer" layoutX="43.0" layoutY="116.0" prefHeight="34.0" prefWidth="222.0" text="Statistique des Freelancers" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Hyperlink>
+            <ImageView fitHeight="27.0" fitWidth="32.0" layoutX="5.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/donut.PNG" />
+               </image>
+            </ImageView>
+            <Hyperlink fx:id="btn_login" layoutX="46.0" layoutY="251.0" onAction="#Emailtest" prefHeight="35.0" prefWidth="185.0" text="Login" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Hyperlink>
+            <ImageView fitHeight="20.0" fitWidth="35.0" layoutX="6.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/391-3911156_johnny-cash-clipart.png" />
+               </image>
+            </ImageView>
+            <Hyperlink fx:id="btn_afficher_profile" layoutX="46.0" layoutY="285.0" onAction="#afficherProfile" prefHeight="35.0" prefWidth="203.0" text="Freelancer Profiles" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Hyperlink>
+            <ImageView fitHeight="20.0" fitWidth="35.0" layoutX="6.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/391-3911156_johnny-cash-clipart.png" />
+               </image>
+            </ImageView>
+            <Separator layoutY="320.0" prefHeight="26.0" prefWidth="271.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="-6.0" prefHeight="89.0" prefWidth="325.0" style="-fx-background-color: black;" styleClass="backgroundAdmin">
+         <children>
+            <Hyperlink focusTraversable="false" layoutX="95.0" layoutY="27.0" prefHeight="35.0" prefWidth="110.0" scaleX="1.2" scaleY="1.2" text="AdminPanel" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Hyperlink>
+         </children>
+      </Pane>
+      <Pane layoutX="319.0" prefHeight="89.0" prefWidth="1645.0" style="-fx-background-color: #0E65F0;" styleClass="backgroundBackNav">
+         <children>
+            <ImageView fitHeight="48.0" fitWidth="50.0" layoutX="1539.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/user.png" />
+               </image>
+            </ImageView>
+            <Hyperlink fx:id="deconnecter" layoutX="1508.0" layoutY="49.0" onAction="#deconnecter" text="se deconnecter" textFill="WHITE" />
+            <Button fx:id="btn_pdf" layoutX="144.0" layoutY="31.0" mnemonicParsing="false" onAction="#GeneratePdf" prefHeight="32.0" prefWidth="230.0" style="-fx-background-color: Grey;" text="Télécharger PDF" textFill="WHITE" />
+         </children>
+      </Pane>
+      <ImageView fitHeight="107.0" fitWidth="249.0" layoutX="415.0" layoutY="144.0">
+         <image>
+            <Image url="@../Images/iconJobForYou22.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_enregistrer" layoutX="457.0" layoutY="914.0" mnemonicParsing="false" onAction="#saveFile" prefHeight="48.0" prefWidth="206.0" style="-fx-background-color: #6EFF5E;" text="Enregistrer Fichier" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.ObservableList?>
+<?import javafx.collections.FXCollections?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" style="-fx-background-color: blue;"   xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SupprimerReclamationController" >
+   <children>
+      <Label layoutX="97.0" layoutY="34.0" prefHeight="25.0" prefWidth="236.0" style="-fx-font-size: 16;" text="Supprimer une réclamation" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="21.0" />
+         </font>
+      </Label>
+     <Label layoutX="32.0" layoutY="115.0" prefHeight="25.0" prefWidth="236.0" style="-fx-font-size: 16;" text="choisir un utlisateur " textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="21.0" />
+         </font>
+      </Label>
+<ComboBox fx:id="comboBoxUtilisateurs" layoutX="183.0" layoutY="115.0" prefHeight="31.0" prefWidth="150.0">
+   <items>
+      <FXCollections fx:factory="observableArrayList">
+         
+      </FXCollections>
+   </items>
+</ComboBox>
+
+
+      <Button  onAction="#supprimerReclamation" layoutX="216.0" layoutY="167.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="104.0" text="Supprimer" />
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</AnchorPane>

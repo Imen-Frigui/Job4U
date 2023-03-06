@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="1035.0" prefWidth="1970.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Postulation1Controller">
+   <children>
+      <AnchorPane layoutX="325.0" layoutY="89.0" prefHeight="945.0" prefWidth="601.0" style="-fx-background-color: white;">
+         <children>
+            <Label layoutX="92.0" layoutY="75.0" text="Fomulaire De Gestion De Postulation">
+               <font>
+                  <Font size="28.0" />
+               </font></Label>
+           <Label layoutX="123.0" layoutY="201.0" prefHeight="21.0" prefWidth="48.0" text="ID" />
+            <Label layoutX="119.0" layoutY="285.0" text="Date" />
+            <Label layoutX="121.0" layoutY="451.0" text="Email" />
+            <Label layoutX="81.0" layoutY="367.0" text="SimpleUser" />
+            <TextField fx:id="tfid_pos" layoutX="175.0" layoutY="194.0" prefHeight="35.0" prefWidth="283.0" />
+            <TextField fx:id="tfDate" layoutX="175.0" layoutY="280.0" prefHeight="31.0" prefWidth="283.0" />
+            <TextField fx:id="tfEmail" layoutX="178.0" layoutY="446.0" prefHeight="31.0" prefWidth="283.0" />
+            <Button layoutX="12.0" layoutY="525.0" mnemonicParsing="false" onAction="#addPostulation" prefHeight="40.0" prefWidth="132.0" style="-fx-background-color: #8FF97C;" text="Ajouter" />
+            <Button layoutX="398.0" layoutY="525.0" mnemonicParsing="false" onAction="#deletePostulation" prefHeight="40.0" prefWidth="146.0" style="-fx-background-color: #DA5D3F;" text="Supprimer" />
+            <Button layoutX="190.0" layoutY="525.0" mnemonicParsing="false" onAction="#modifierPostulation" prefHeight="40.0" prefWidth="146.0" style="-fx-background-color: #FBCB6B;" text="Modifier" />
+            <Button layoutY="694.0" mnemonicParsing="false" onAction="#savepos" prefHeight="48.0" prefWidth="118.0" style="-fx-background-color: #8FF97C;" text="Accepter" />
+            <Button layoutX="144.0" layoutY="694.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="193.0" style="-fx-background-color: #DA5D3F;" text="Refuser" />
+            <Button layoutX="360.0" layoutY="688.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="222.0" style="-fx-background-color: #D6D30B;" text="En train de traitement" />
+            <TextField fx:id="tfSimpleUser" layoutX="175.0" layoutY="362.0" prefHeight="31.0" prefWidth="283.0" />
+         </children>
+         
+      </AnchorPane>
+      <AnchorPane layoutX="927.0" layoutY="98.0" prefHeight="938.0" prefWidth="1038.0" style="-fx-background-color: white;">
+         <children>
+            <Button layoutX="433.0" layoutY="764.0" mnemonicParsing="false" onAction="#afficher" prefHeight="34.0" prefWidth="172.0" style="-fx-background-color: #C5A4D6;" text="Afficher" />
+            <Button layoutX="866.0" layoutY="824.0" mnemonicParsing="false" onAction="#Refresh" prefHeight="29.0" prefWidth="172.0" style="-fx-background-color: #C5A4D6;" text="Refresh" />
+            <Button layoutX="72.0" layoutY="823.0" mnemonicParsing="false" onAction="#chercherpos" prefHeight="34.0" prefWidth="203.0" style="-fx-background-color: #C5A4D6;" text="Chercher" />
+            <ComboBox fx:id="combouser" layoutX="396.0" layoutY="840.0" onAction="#handle" prefHeight="29.0" prefWidth="271.0" />
+            <TableView fx:id="tablePos" editable="true" prefHeight="726.0" prefWidth="1038.0">
+              <columns>
+                <TableColumn fx:id="idColumn" prefWidth="167.0" text="ID" />
+                  <TableColumn fx:id="emailColumn" prefWidth="204.0" text="date" />
+                  <TableColumn fx:id="dateColumn" prefWidth="241.0" text="user" />
+                <TableColumn fx:id="userColumn" maxWidth="732.0" prefWidth="425.0" text="email" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <Pane layoutY="87.0" prefHeight="953.0" prefWidth="325.0" style="-fx-background-color: #495AEB;" styleClass="backgroundBackNav">
+         <children>
+            <Separator layoutX="1.0" layoutY="69.0" prefHeight="26.0" prefWidth="269.0" />
+            <ImageView fitHeight="27.0" fitWidth="32.0" layoutX="5.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/users.png" />
+               </image>
+            </ImageView>
+            <Hyperlink fx:id="gestionuser" focusTraversable="false" layoutX="63.0" layoutY="27.0" prefHeight="29.0" prefWidth="203.0" scaleX="1.2" scaleY="1.2" text="Gestion des Postulations" textFill="WHITE" />
+            <Separator layoutY="129.0" prefHeight="26.0" prefWidth="271.0" />
+            <ImageView fitHeight="27.0" fitWidth="32.0" layoutX="5.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/statline.png" />
+               </image>
+            </ImageView>
+            <Hyperlink fx:id="State_Freelancer" layoutX="43.0" layoutY="95.0" prefHeight="34.0" prefWidth="222.0" text="Statistique des Postulations" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Hyperlink>
+            <ImageView fitHeight="20.0" fitWidth="35.0" layoutX="6.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/391-3911156_johnny-cash-clipart.png" />
+               </image>
+            </ImageView>
+            <Separator layoutY="190.0" prefHeight="26.0" prefWidth="271.0" />
+            <Hyperlink fx:id="gestionsociete" focusTraversable="false" layoutX="52.0" layoutY="155.0" onAction="#GoToGestionSciete" prefHeight="35.0" prefWidth="222.0" text="Gestion des Societés" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane prefHeight="89.0" prefWidth="325.0" style="-fx-background-color: black;" styleClass="backgroundAdmin">
+         <children>
+            <Hyperlink focusTraversable="false" layoutX="108.0" layoutY="27.0" prefHeight="35.0" prefWidth="110.0" scaleX="1.2" scaleY="1.2" text="Admin " textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Hyperlink>
+         </children>
+      </Pane>
+      <Pane layoutX="325.0" prefHeight="89.0" prefWidth="1645.0" style="-fx-background-color: #495AEB;" styleClass="backgroundBackNav">
+         <children>
+            <ImageView fitHeight="48.0" fitWidth="50.0" layoutX="1539.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/user.png" />
+               </image>
+            </ImageView>
+            <Hyperlink fx:id="deconnecter" layoutX="1508.0" layoutY="49.0" onAction="#deconnecter" text="se deconnecter" textFill="WHITE" />
+            <ImageView fitHeight="62.0" fitWidth="222.0" layoutX="61.0" layoutY="12.0">
+               <image>
+                  <Image url="@../Images/iconJobForYou22.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

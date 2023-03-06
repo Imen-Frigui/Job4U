@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DashboradAdminController">
+       
+ <children>
+      <VBox prefHeight="400.0" prefWidth="184.0" style="-fx-background-color: skyblue;">
+         <children>
+            <Label text="Welcome Mr">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Line endX="100.0" startX="-100.0" />
+            <Label onMouseClicked="#Supprimer" prefHeight="31.0" prefWidth="136.0" text="Supprimer">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <Line endX="100.0" startX="-100.0" />
+            <Label onMouseClicked="#Modifier" prefHeight="31.0" prefWidth="121.0" text="Modifier">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <Line endX="100.0" startX="-100.0" />
+            <Label onMouseClicked="#AjouterReponse" text="Ajouter Reponse">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <Line endX="100.0" startX="-100.0" />
+            <Label onMouseClicked="#GererProduits" prefHeight="31.0" prefWidth="189.0" text="Afficher Reponses">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <Line endX="100.0" startX="-100.0" />
+            <Label onMouseClicked="#GererProduits" prefHeight="31.0" prefWidth="189.0" text="Statistique">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <Line endX="100.0" startX="-100.0" />
+            <ImageView fitHeight="123.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@324479206_724718092423349_726677446961725025_n.jpg" />
+               </image>
+            </ImageView>
+            <TextField prefHeight="42.0" prefWidth="201.0" promptText="Recherecher...">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </TextField>
+         </children></VBox>
+       <TableView fx:id="boutiqueTable" layoutX="199.0" prefHeight="400.0" prefWidth="401.0" style="-fx-background-color: white;">
+        <columns>
+          <TableColumn fx:id="colMessage" prefWidth="75.0" text="Message" />
+             <TableColumn fx:id="colType" prefWidth="75.0" text="Type" />
+            <TableColumn fx:id="colStatut" prefWidth="75.0" text="Statut" />
+                <TableColumn fx:id="colUser" prefWidth="75.0" text="User" />
+       
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </children>
+ 
+</AnchorPane>
