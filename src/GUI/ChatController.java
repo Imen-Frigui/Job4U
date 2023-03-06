@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -33,7 +34,8 @@ import utils.MyListener;
  * @author Imen Frigui
  */
 public class ChatController implements Initializable {
-
+    @FXML
+    private TextField tfrech;
     private Discussion d;
 
     public static List<Discussion> dissList = new ArrayList<>();
@@ -62,7 +64,7 @@ public class ChatController implements Initializable {
             dissList.clear();
             ServiceDiscussion sdis = new ServiceDiscussion();
 
-            dissList.addAll(sdis.afficher());
+            dissList.addAll(sdis.AfficherListe(2));
             Collections.reverse(dissList);
 
             discs.addAll(getDiscData());
@@ -144,5 +146,50 @@ public class ChatController implements Initializable {
         stage.setScene(new Scene(anchorPane));
         stage.show();
     }
+@FXML
+    private void rech(ActionEvent event) {
+               try {
+                   dissGrid.getChildren().clear();
+            dissList.clear();
+            ServiceDiscussion sdis = new ServiceDiscussion();
 
+            dissList.addAll(sdis.Search(tfrech.getText()));
+            Collections.reverse(dissList);
+
+            discs.addAll(getDiscData());
+            Collections.reverse(discs);
+
+            int column = 0;
+            int row = 1;
+            for (int i = 0; i < dissList.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("DissShort.fxml"));
+                AnchorPane anchorPane;
+                anchorPane = fxmlLoader.load();
+
+                DissShortController disShortController = fxmlLoader.getController();
+                disShortController.setData(dissList.get(i), myListener);
+
+                if (column == 1) {
+                    column = 0;
+                    row++;
+                }
+
+                dissGrid.add(anchorPane, column++, row); //(child,column,row)
+                //set grid width
+                dissGrid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                dissGrid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                dissGrid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                dissGrid.setMinHeight(280);
+                dissGrid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                dissGrid.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(anchorPane, new Insets(10));
+            }
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 }

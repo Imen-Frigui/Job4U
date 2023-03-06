@@ -111,38 +111,50 @@ public class ServiceDiscussion implements IServiceDiscussion<Discussion> {
         }
     }
 
-    public ArrayList<Discussion> AfficherListe(int id) {
-        ArrayList<Discussion> discussion = new ArrayList<>();
+    public List<Discussion> AfficherListe(int id) {
+        List<Discussion> listDi = new ArrayList<>();
         try {
-            String requete;
-            requete = "Select * FROM `discussion` WHERE `id_reciver`=?";
-            PreparedStatement pst = connection.prepareStatement(requete);
-            pst.setInt(3, id);
+            String req_select = "Select * FROM `discussion` WHERE `id_sender`=?";
+            PreparedStatement pst = connection.prepareStatement(req_select);
+            pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                discussion.add(new Discussion(rs.getInt(1), rs.getInt(2), rs.getInt(3)));
-            }
+                int id_disc = rs.getInt(1);
+                int id_sender = rs.getInt(2);
+                int id_reciver = rs.getInt(3);
+                ServiceUsers su = new ServiceUsers();
+                User sender = su.getUserById(id_sender);
+                User reciver = su.getUserById(id_reciver);
+                Discussion disc = new Discussion(id_disc, sender, reciver);
+                listDi.add(disc);            }
         } catch (SQLException ex) {
             System.out.println("Erreur lors d'extraction des données \n" + ex.getMessage());
         }
-        return discussion;
+        return listDi;
     }
     
-    public ArrayList<Discussion> Search (String search){
-            ArrayList<Discussion> discussion = new ArrayList<>();
+public ArrayList<Discussion> Search (String search){
+            ArrayList<Discussion> Disc = new ArrayList<>();
         try{
-            PreparedStatement p = connection.prepareStatement("Select `discussion`.`id_disc`,`discussion`.`id_sender`,`discussion`.`id_reciver` FROM `users` JOIN `Discussion` WHERE `users`.`Nom` LIKE ? OR `users`.`Prenom` LIKE ?");
+            PreparedStatement p = connection.prepareStatement("Select `discussion`.`id_disc`,`discussion`.`id_sender`,`discussion`.`id_reciver` FROM `users` JOIN `Discussion` ON `users`.`Id`=`Discussion`.`id_sender` WHERE `users`.`Nom` LIKE ?");
             p.setString(1,"%"+search+"%");
-            p.setString(2,"%"+search+"%");
+           // p.setString(2,"%"+search+"%");
 
             ResultSet r = p.executeQuery();
             while(r.next()){
-                discussion.add(new Discussion(r.getInt(1),r.getInt(2),r.getInt(3)));
+                int id_disc = r.getInt(1);
+                int id_sender = r.getInt(2);
+                int id_reciver = r.getInt(3);
+                ServiceUsers su = new ServiceUsers();
+                User sender = su.getUserById(id_sender);
+               User reciver = su.getUserById(id_reciver);
+                Discussion disc = new Discussion(id_disc, sender, reciver);
+                Disc.add(disc);
         }
         } catch (SQLException ex) {
             System.out.println("Erreur lors d'extraction des données \n" + ex.getMessage());
         }
-            return discussion;
+            return Disc;
 
     }
 }
