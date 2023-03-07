@@ -38,7 +38,7 @@ public class ServiceOffre implements IServiceOffre<offre>{
     public void supprimer(offre t) {
         try{
         ste = connection.createStatement();
-            String req ="DELETE FROM offre Where id="+t.getId()+");";
+            String req ="DELETE FROM offrefinal Where id="+t.getId()+");";
             ste.executeUpdate(req);}
         catch(SQLException ex){
             System.out.println("SQLException "+ex.getMessage());
@@ -59,7 +59,7 @@ public class ServiceOffre implements IServiceOffre<offre>{
     public void modifier(offre t) {
        try{
         ste = connection.createStatement();
-        String reqq="UPDATE offre SET nom='"+t.getNom()+"', descrip='"+t.getDesc()+"', duree ='"+t.getDuree()+"' WHERE id='"+t.getId()+"';";
+        String reqq="UPDATE offrefinal SET nom='"+t.getNom()+"', descrip='"+t.getDesc()+"', date_debut='"+t.getDate_debut()+"', duree ='"+t.getDuree()+"' WHERE id='"+t.getId()+"';";
            // String req ="UPDATE offre SET  nom ="+t.getNom()+" , descrip ="+t.getDesc()+" , duree="+t.getDuree()+"  where id="+t.getId()+";";
             ste.executeUpdate(reqq);}
        catch(SQLException ex){
@@ -71,11 +71,12 @@ public class ServiceOffre implements IServiceOffre<offre>{
 
     @Override
     public void ajouter2(offre t) throws SQLException { 
-        PreparedStatement pre = connection.prepareStatement("INSERT INTO offre (nom,descrip,duree,proj_id) VALUES (?,?,?,?)");
+        PreparedStatement pre = connection.prepareStatement("INSERT INTO offrefinal (nom,descrip,date_debut,duree,proj_id) VALUES (?,?,?,?,?)");
         pre.setString(1, t.getNom());
         pre.setString(2, t.getDesc());
-        pre.setString(3,t.getDuree());
-        pre.setInt(4,t.getProj_id());
+        pre.setDate(3,t.getDate_debut());
+        pre.setString(4,t.getDuree());
+        pre.setInt(5,t.getProj_id());
         pre.executeUpdate();
         
     }
@@ -85,18 +86,21 @@ public class ServiceOffre implements IServiceOffre<offre>{
         ArrayList<offre> listpers = new ArrayList<>();
         try{
         ste= connection.createStatement();
-        String req_select="SELECT * FROM offre;";
+        String req_select="SELECT * FROM offrefinal;";
         ResultSet res = ste.executeQuery(req_select);
         while(res.next()){
             int id = res.getInt(1);
             String nom = res.getString("nom");
             String desc = res.getString(3);
-            String duree = res.getString(4);
-            offre of = new offre(id,nom,desc,duree);
+            Date date_debut = res.getDate(4);
+            String duree = res.getString(5);
+            int proj_id = res.getInt(6);
+            offre of = new offre(id,nom,desc,date_debut,duree,proj_id);
             listpers.add(of);
         }
         }catch(SQLException ex){
-            System.out.println("SQLException "+ex.getMessage());
+          //  System.out.println("SQLException "+ex.getMessage());
+            System.out.println("Error sql");
         }
         
         return listpers;
@@ -105,14 +109,16 @@ public class ServiceOffre implements IServiceOffre<offre>{
         ObservableList<offre> listpers = FXCollections.observableArrayList() ;
         try{
         ste= connection.createStatement();
-        String req_select="SELECT * FROM offre;";
+        String req_select="SELECT * FROM offrefinal;";
         ResultSet res = ste.executeQuery(req_select);
         while(res.next()){
-            int id = res.getInt(1);
+           int id = res.getInt(1);
             String nom = res.getString("nom");
             String desc = res.getString(3);
-            String duree = res.getString(4);
-            offre of = new offre(id,nom,desc,duree);
+            Date date_debut = res.getDate(4);
+            String duree = res.getString(5);
+            int proj_id = res.getInt(6);
+            offre of = new offre(id,nom,desc,date_debut,duree,proj_id);
             listpers.add(of);
         }
         }catch(SQLException ex){

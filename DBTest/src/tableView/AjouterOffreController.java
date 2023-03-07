@@ -11,9 +11,11 @@ import entities.Project;
 import entities.offre;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -21,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
@@ -45,6 +48,8 @@ public class AjouterOffreController implements Initializable {
      ServiceProject sp = new ServiceProject();
       Statement ste;
     Connection con;
+    @FXML
+    private DatePicker sDate;
     /**
      * Initializes the controller class.{
           /*con = MyDB.getInstance().getCon();
@@ -64,8 +69,7 @@ public class AjouterOffreController implements Initializable {
         }catch(SQLException ex){
             System.out.println("SQLException "+ex.getMessage());
         }  */
-    ServiceOffre so = new ServiceOffre();
-    listM= so.afficher1();
+    listM= sp.afficher1();
         oComb.setItems(listM);
     }    
 
@@ -76,14 +80,18 @@ public class AjouterOffreController implements Initializable {
          String nom = nomOff.getText();
          String desc = descOff.getText();
           String duree = dureeOff.getText();
+           LocalDate myFD = sDate.getValue();
+           Date date = Date.valueOf(myFD);
+          int dd =oComb.getSelectionModel().getSelectedIndex()+1;
          if (nom.isEmpty() || desc.isEmpty() || duree.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setContentText("Please Fill All DATA");
             alert.showAndWait();
          }else {
-       offre p = new offre(nom,desc,duree);
-       sp.ajouter(p);
+       offre p = new offre(nom,desc,date,duree,dd);
+       System.out.println(dd);
+       sp.ajouter2(p);
        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.close();      
     }

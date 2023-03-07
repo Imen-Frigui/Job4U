@@ -3,20 +3,22 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="422.0" prefWidth="636.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Front.OffreviewController">
+<AnchorPane id="AnchorPane" prefHeight="597.0" prefWidth="1058.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Front.OffreviewController">
    <stylesheets>
         <URL value="@tableview.css" />
     </stylesheets>
    <children>
-      <TableView fx:id="studentsTable" layoutX="14.0" layoutY="157.0" prefHeight="265.0" prefWidth="602.0">
+      <TableView fx:id="studentsTable" layoutY="176.0" prefHeight="265.0" prefWidth="572.0">
         <columns>
           <TableColumn fx:id="idCol" maxWidth="70.0" prefWidth="70.0" style="-fx-alignment: center;" text="ID" />
           <TableColumn fx:id="nameCol" maxWidth="100.0" prefWidth="100.0" style="-fx-alignment: center;" text="Nom" />
@@ -53,5 +55,10 @@
             <Font name="Arial Black" size="27.0" />
          </font>
       </Text>
+      <ScrollPane layoutX="572.0" layoutY="61.0" prefHeight="535.0" prefWidth="485.0">
+         <content>
+            <VBox fx:id="cardLayout" prefHeight="544.0" prefWidth="469.0" />
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

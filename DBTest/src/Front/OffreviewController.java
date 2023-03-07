@@ -101,7 +101,7 @@ public class OffreviewController implements Initializable {
         }
     }
 
-    @FXML
+   /* @FXML
     private void addProjet(MouseEvent event) {
         try {
             Parent parent = FXMLLoader.load(getClass().getResource("/Front/trois.fxml"));
@@ -113,7 +113,7 @@ public class OffreviewController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(TroisController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    }*/
 
     @FXML
     private void aClose(MouseEvent event) {

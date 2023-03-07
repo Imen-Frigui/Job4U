@@ -15,6 +15,7 @@ public class offre {
      private int id;
     private String nom;
     private String desc;
+    private Date date_debut;
     private String Duree;
     private int proj_id;
 
@@ -33,15 +34,17 @@ public class offre {
         this.id = id;
     }
 
-    public offre(String nom, String desc, String Duree, int proj_id) {
+    public offre(String nom, String desc,Date date_debut, String Duree, int proj_id) {
         this.nom = nom;
+        this.date_debut=date_debut;
         this.desc = desc;
         this.Duree = Duree;
         this.proj_id = proj_id;
     }
 
-    public offre(int id, String nom, String desc, String Duree, int proj_id) {
+    public offre(int id, String nom, String desc,Date date_debut, String Duree, int proj_id) {
         this.id = id;
+        this.date_debut=date_debut;
         this.nom = nom;
         this.desc = desc;
         this.Duree = Duree;
@@ -108,14 +111,16 @@ public class offre {
      * @param date_fin the date_fin to set
      */
 
-    public offre(int id, String nom, String desc,String Duree) {
+    public offre(int id, String nom, String desc,Date date_debut,String Duree) {
+        this.date_debut=date_debut;
         this.id = id;
         this.nom = nom;
         this.desc = desc;
         this.Duree = Duree;
     }
 
-    public offre(String nom, String desc, String Duree){
+    public offre(String nom, String desc,Date date_debut,String Duree){
+        this.date_debut=date_debut;
      this.nom = nom;
         this.desc = desc;
         this.Duree = Duree;   
@@ -124,11 +129,22 @@ public class offre {
     public offre() {
     }
 
+    public Date getDate_debut() {
+        return date_debut;
+    }
+
+    public void setDate_debut(Date date_debut) {
+        this.date_debut = date_debut;
+    }
 
     @Override
     public String toString() {
-        return "offre{" + "id=" + id + ", nom=" + nom + ", desc=" + desc + " Duree=" + Duree + '}';
+        return "offre{" + "id=" + id + ", nom=" + nom + ", desc=" + desc + ", date_debut=" + date_debut + ", Duree=" + Duree + ", proj_id=" + proj_id + '}';
     }
+    
+
+
+    
     
     
     

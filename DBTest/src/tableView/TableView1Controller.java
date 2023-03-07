@@ -6,11 +6,13 @@ package tableView;
 
 import Connn.MyDB;
 import Services.ServiceOffre;
+import entities.DataSingelton;
 import interfaces.IServiceOffre;
 import java.sql.Connection;
 import entities.offre;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,6 +28,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -53,17 +56,15 @@ public class TableView1Controller implements Initializable {
     private TableColumn<offre, String> descCol;
 
     ObservableList listM;
+    DataSingelton data= DataSingelton.getInstance();
    
     int index;
     offre offr;
+    
     @FXML
-    private TextField lId;
+    private TableColumn<?, ?> fin;
     @FXML
-    private TextField lNom;
-    @FXML
-    private TextField lDesc;
-    @FXML
-    private TextField lDuree;
+    private Button iUp;
     
     /**
      * Initializes the controller class.
@@ -75,6 +76,7 @@ public class TableView1Controller implements Initializable {
     }    
     @FXML
     private void getItem(MouseEvent event) {
+       try { 
         index=offTable.getSelectionModel().getSelectedIndex();
         /*
         lId.setText(idCol.getCellData(index).toString());
@@ -87,10 +89,18 @@ public class TableView1Controller implements Initializable {
         String nom = offTable.getSelectionModel().getSelectedItems().get(0).getNom();
         String desc = offTable.getSelectionModel().getSelectedItems().get(0).getDesc();
         String duree = offTable.getSelectionModel().getSelectedItems().get(0).getDuree();
-        this.lId.setText(String.valueOf(id));
+        Date date_debut = offTable.getSelectionModel().getSelectedItems().get(0).getDate_debut();
+        data.setNom(nom);
+        data.setDescrip(desc);
+        data.setDuree(duree);
+        data.setId(id);
+        data.setDate_debut(date_debut);}catch(Exception e){
+            System.out.println("Problem");
+        }
+        /*.lId.setText(String.valueOf(id));
         this.lNom.setText(nom);
         this.lDesc.setText(desc);
-        this.lDuree.setText(duree);
+        this.lDuree.setText(duree);*/
 
     }
     
@@ -139,36 +149,18 @@ public class TableView1Controller implements Initializable {
         
     }
 
-    @FXML
-    private void iUpdate(MouseEvent event) {
-       /* offr = offTable.getSelectionModel().getSelectedItem();
-                            FXMLLoader loader = new FXMLLoader ();
-                            loader.setLocation(getClass().getResource("/tableView/AjouterOffre.fxml"));
-                            try {
-                                loader.load();
-                            } catch (IOException ex) {
-                                Logger.getLogger(TableView1Controller.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                            
-                            AjouterOffreController AjouterOffreController = loader.getController();
-                            AjouterOffreController.setText( offr.getNom(), offr.getDesc(), offr.getDuree());
-                            Parent parent = loader.getRoot();
-                            Stage stage = new Stage();
-                            stage.setScene(new Scene(parent));
-                            stage.initStyle(StageStyle.UTILITY);
-                            stage.show();*/
-                            
-    }
 
     public void refresh(){
         ServiceOffre so = new ServiceOffre();
+        listM= so.afficher1();
+        offTable.setItems(listM);
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
         descCol.setCellValueFactory(new PropertyValueFactory<>("desc"));
-        dureeCol.setCellValueFactory(new PropertyValueFactory<>("duree"));
+        fin.setCellValueFactory(new PropertyValueFactory<>("date_debut"));
+         dureeCol.setCellValueFactory(new PropertyValueFactory<>("duree"));
         
-        listM= so.afficher1();
-        offTable.setItems(listM);
+        
     }
     @FXML
     private void oRef(MouseEvent event) {
@@ -176,28 +168,20 @@ public class TableView1Controller implements Initializable {
         refresh();
     }
 
+    
+
     @FXML
-    private void onSave(MouseEvent event) {
-        ServiceOffre sp = new ServiceOffre();
-         int number = Integer.parseInt(lId.getText());
-         String nom = lNom.getText();
-         String desc = lDesc.getText();
-          String duree = lDuree.getText(); 
-              System.out.println(number);
-              System.out.println(nom);
-              System.out.println(desc);
-              System.out.println(duree);
-          
-         if (nom.isEmpty() || desc.isEmpty() || duree.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("Please Fill All DATA");
-            alert.showAndWait();
-         }else {
-       offre p = new offre(number,nom,desc,duree);
-       sp.modifier(p);
-           refresh(); 
-    }
+    private void goUp(MouseEvent event) {
+        try {
+            Parent parent = FXMLLoader.load(getClass().getResource("/tableView/update.fxml"));
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(TableView1Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     

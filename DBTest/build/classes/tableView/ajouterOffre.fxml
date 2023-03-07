@@ -3,6 +3,7 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -43,7 +44,7 @@
             <TextField fx:id="descOff" prefHeight="130.0" prefWidth="535.0" />
          </children>
       </HBox>
-      <HBox layoutX="-5.0" layoutY="276.0" prefHeight="31.0" prefWidth="647.0">
+      <HBox layoutX="-3.0" layoutY="318.0" prefHeight="31.0" prefWidth="647.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Duree" wrappingWidth="107.34375">
                <font>
@@ -56,5 +57,11 @@
       <Button layoutX="151.0" layoutY="349.0" mnemonicParsing="false" onMouseClicked="#addOff" prefHeight="45.0" prefWidth="125.0" text="Ajouter" />
       <Button layoutX="359.0" layoutY="349.0" mnemonicParsing="false" onMouseClicked="#annOff" prefHeight="45.0" prefWidth="107.0" text="Annuler" />
       <ComboBox fx:id="oComb" layoutX="107.0" layoutY="60.0" prefHeight="25.0" prefWidth="339.0" />
+      <DatePicker fx:id="sDate" layoutX="127.0" layoutY="277.0" prefHeight="25.0" prefWidth="405.0" />
+      <Text layoutX="-3.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Debut">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

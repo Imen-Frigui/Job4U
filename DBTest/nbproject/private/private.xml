@@ -5,9 +5,12 @@
         <group>
             <file>file:/C:/Users/Ahmed/OneDrive/Documents/NetBeansProjects/DBTest/src/tableView/TableView1Controller.java</file>
             <file>file:/C:/Users/Ahmed/OneDrive/Documents/NetBeansProjects/DBTest/src/entities/offre.java</file>
+            <file>file:/C:/Users/Ahmed/OneDrive/Documents/NetBeansProjects/DBTest/src/tableView/ShowCardController.java</file>
             <file>file:/C:/Users/Ahmed/OneDrive/Documents/NetBeansProjects/DBTest/src/dbtest/DBTest.java</file>
+            <file>file:/C:/Users/Ahmed/OneDrive/Documents/NetBeansProjects/DBTest/src/tableView/UpdateController.java</file>
             <file>file:/C:/Users/Ahmed/OneDrive/Documents/NetBeansProjects/DBTest/src/Services/ServiceOffre.java</file>
-            <file>file:/C:/Users/Ahmed/OneDrive/Documents/NetBeansProjects/DBTest/src/entities/Project.java</file>
+            <file>file:/C:/Users/Ahmed/OneDrive/Documents/NetBeansProjects/DBTest/src/tableView/AjouterOffreController.java</file>
+            <file>file:/C:/Users/Ahmed/OneDrive/Documents/NetBeansProjects/DBTest/src/tableView/CardController.java</file>
         </group>
     </open-files>
 </project-private>
